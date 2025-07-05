@@ -1,5 +1,6 @@
-<template>  <Menu />
+<template>
   <router-view v-slot="{ Component, route }">
+    <Menu />
     <FadeIn><component :is="Component" :key="route.path"></component></FadeIn>
   </router-view>
 </template>

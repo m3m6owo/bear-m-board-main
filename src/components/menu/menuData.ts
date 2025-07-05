@@ -6,9 +6,9 @@ export const menuData = [
     pathName: 'about',
     list: [
       {
-        id: 'aerial-photo',
+        id: 'about',
         name: 'ABOUT',
-        link: 'home',
+        link: 'about',
       },
 
     ],
@@ -22,7 +22,7 @@ export const menuData = [
       {
         id: 'project',
         name: 'PROJECT',
-        link: 'home',
+        link: 'project',
       },
     ],
   },
@@ -34,8 +34,8 @@ export const menuData = [
     list: [
       {
         id: 'contact',
-        name: '嚴選建材',
-        link: 'home',
+        name: 'Contact',
+        link: 'contact',
       },
     ],
   },

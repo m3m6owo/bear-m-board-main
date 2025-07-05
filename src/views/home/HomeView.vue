@@ -1,4 +1,5 @@
 <template>
+
   <div class="home-box main-box">
 
     <div class="card1">
@@ -90,7 +91,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-
+import Menu from '@/components/menu/Menu.vue'
 import gsap from 'gsap'
 import FadeIn from '@/components/transition/FadeIn.vue'
 

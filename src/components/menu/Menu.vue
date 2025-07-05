@@ -45,12 +45,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, nextTick, type ComponentPublicInstance } from 'vue'
+import { onMounted, ref, nextTick, type ComponentPublicInstance ,watch} from 'vue'
 import gsap from 'gsap'
 import CustomEase from 'gsap/CustomEase'
 import { menuData } from './menuData'
+import { useRoute } from 'vue-router'
 import '@/assets/scss/menu/_menu.scss'
-
+const route = useRoute()
 const isMobile = ref(false)
 
 // 控制開關
@@ -271,6 +272,15 @@ onMounted(() => {
     isMobile.value = 'ontouchstart' in window || navigator.maxTouchPoints > 0
   })
 })
+
+watch(
+  () => route.fullPath,
+  () => {
+    if (is_Show.value) {
+      showClick(false)
+    }
+  }
+)
 </script>
 
 <style lang="scss"></style>
