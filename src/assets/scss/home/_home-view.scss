@@ -1,0 +1,507 @@
+@use '../utils/mixin' as *;
+
+
+
+
+  .home-box{
+    display: flex;
+     position: relative;
+    width: 100%;
+    flex-direction: column;
+    background-color: #ECE8E8;
+    .card1{
+      width: 100%;
+      height: 100svh;
+       overflow: hidden;
+       position: relative;
+       .bg-box{
+        width: 100%;
+        height: 100svh;
+        overflow: hidden;
+        img{
+          width: 100%;
+          object-fit: cover;
+          transform: translateY(-9vw);
+        }
+      }
+
+      .hello{
+        position: absolute;
+        top: 0vw;
+        left: 3vw;
+        color: white;
+        font-size: 10vw;
+
+        font-family: 'Jost';
+
+      }
+
+      .jshan{
+        position: absolute;
+        right: 4vw;
+        bottom: 1vw;
+        color: white;
+         font-weight: 500;
+        font-size: 10vw;
+        font-family: "Dancing Script", cursive;
+        font-style: italic;
+      }
+
+      .small-title{
+        position: absolute;
+        left: 3vw;
+        bottom: 3vw;
+        color: white;
+
+        font-size: 2vw;
+        font-family: 'Cormorant Garamond', sans-serif;
+
+      }
+    }
+
+    .card2{
+      display: flex;
+      width: 100%;
+      height: 100svh;
+
+      .david-ogivy-box {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        padding-top: 7vw;
+        padding-left: 9vw;
+        padding-bottom: 7vw;
+        @media all and (max-width: 1440px) {
+          padding-top: 14vw;
+        }
+        @media all and (max-width: 1024px) {
+          padding-top: 10vw;
+          padding-left: 8vw;
+          padding-right: 6vw;
+        }
+        .title-box {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 3vw;
+          // opacity: 0;
+          @media all and (max-width: 1024px) {
+            opacity: 1;
+            flex-direction: column-reverse;
+            justify-content: center;
+            margin: 0 auto;
+          }
+          .en-title {
+            font-size: 5vw;
+            font-family: "Cormorant Garamond";
+            color: #232323;
+            font-weight:bold;
+            letter-spacing: 0.05em;
+            @media all and (max-width: 1024px) {
+              color: #232323;
+              margin-right: 0vw;
+              margin-top: 1.5vw;
+            }
+          }
+
+
+        }
+
+        .bottom-content-box {
+          display: flex;
+          justify-content: space-between;
+          width: 85%;
+          position: relative;
+
+          @media all and (max-width: 1024px) {
+            flex-direction: column;
+            margin-top: 6vw;
+            width: 100%;
+          }
+
+          @media all and (max-width: 500px) {
+            margin-top: 10vw;
+          }
+          .left-box {
+            font-family: "微軟正黑體";
+
+            .black-box {
+
+              font-size: 2.2vw;
+              display: flex;
+              position: relative;
+              flex-direction: column;
+              line-height: 2;
+              @media all and (max-width: 1024px) {
+                display: none;
+              }
+              .black1 {
+                color: #232323;
+                z-index: 1;
+                .clip-text {
+                  div {
+                    div {
+                      clip-path: inset(100% 0% 0% 0%);
+                    }
+                  }
+                }
+              }
+              .black2 {
+                color: #232323;
+                z-index: 1;
+                .clip-text {
+                  div {
+                    div {
+                      clip-path: inset(100% 0% 0% 0%);
+                    }
+                  }
+                }
+              }
+              .black3 {
+                z-index: 1;
+                color: #232323;
+                .clip-text {
+                  div {
+                    div {
+                      clip-path: inset(100% 0% 0% 0%);
+                    }
+                  }
+                }
+              }
+              .black4 {
+                z-index: 1;
+                color: #232323;
+                .clip-text {
+                  div {
+                    div {
+                      clip-path: inset(100% 0% 0% 0%);
+                    }
+                  }
+                }
+              }
+
+              .blue-box {
+                line-height: 2;
+                font-size: 2.2vw;
+                display: flex;
+                position: absolute;
+                flex-direction: column;
+                color: #3f6687;
+                top: 0px;
+                left: 0px;
+                .blue1 {
+                  z-index: 10;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+                .blue2 {
+                  z-index: 10;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+                .blue3 {
+                  z-index: 10;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+                .blue4 {
+                  z-index: 10;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+              }
+
+              .black2-box {
+                font-size: 2.2vw;
+                display: flex;
+                position: absolute;
+                flex-direction: column;
+                top: 0px;
+                left: 0px;
+
+                .black2-1 {
+                  z-index: 20;
+                  color: #232323;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+                .black2-2 {
+                  z-index: 20;
+                  color: #232323;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+                .black2-3 {
+                  z-index: 20;
+                  color: #232323;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+                .black2-4 {
+                  color: #232323;
+                  z-index: 20;
+                  .clip-text {
+                    div {
+                      div {
+                        clip-path: inset(100% 0% 0% 0%);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .mobile-black-box {
+              display: none;
+              @media all and (max-width: 1024px) {
+                display: flex;
+                font-family: "Cormorant Garamond";
+                flex-direction: column;
+                margin-top: 1.5vw;
+                line-height: 1.5;
+                color: #232323;
+              }
+
+              @media all and (max-width: 500px) {
+                margin-top: 3vw;
+              }
+            }
+          }
+
+
+          .right-box {
+            display: flex;
+
+            .more-box {
+              z-index: 10;
+              @include indexMore();
+              cursor: pointer;
+              display: flex;
+              color: #232323;
+              justify-content: left;
+              position: absolute;
+              bottom: 1vw;
+              right: 0vw;
+              @media all and (max-width: 1024px) {
+                justify-content: center;
+
+              }
+              @media all and (max-width: 500px) {
+                margin-top: 10vw;
+              }
+              div {
+                display: flex;
+                align-items: center;
+              }
+
+              img {
+                width: 2vw;
+                align-items: center;
+                margin-left: 0.5vw;
+
+                @media all and (max-width: 1024px) {
+                  width: 54px;
+                  margin-left: 3vw;
+                }
+                @media all and (max-width: 500px) {
+                  width: 6vw;
+                  min-width: 30px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .card3{
+      display: flex;
+      flex-direction: column;
+      padding: 7vw 9vw;
+
+      .title-box{
+        display: flex;
+        margin-bottom: 3vw;
+        .en-title {
+          font-size: 5vw;
+          font-family: "Cormorant Garamond";
+          color: #232323;
+          font-weight:bold;
+          letter-spacing: 0.05em;
+          @media all and (max-width: 1024px) {
+            color: #232323;
+            margin-right: 0vw;
+            margin-top: 1.5vw;
+          }
+        }
+      }
+
+      .project-box{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .item{
+          width: 22%;
+          .img-box{
+            display: flex;
+            width: 100%;
+            height: 20vw;
+            img{
+              width: 100%;
+              object-fit: cover;
+
+            }
+          }
+
+          .name{
+            font-size: 1vw;
+            font-family: "Noto Serif TC";
+            letter-spacing: 0.3em;
+            color: #232323;
+            font-weight: 500;
+         padding-top: 1vw;
+            padding-left: 0.5vw;
+
+          }
+        }
+      }
+
+      .more-box {
+        z-index: 10;
+        @include indexMore();
+        cursor: pointer;
+        display: flex;
+        color: #232323;
+        justify-content: right;
+        margin-top: 4vw;
+        @media all and (max-width: 1024px) {
+          justify-content: center;
+
+        }
+        @media all and (max-width: 500px) {
+          margin-top: 10vw;
+        }
+        div {
+          display: flex;
+          align-items: center;
+        }
+
+        img {
+          width: 2vw;
+          align-items: center;
+          margin-left: 0.5vw;
+
+          @media all and (max-width: 1024px) {
+            width: 54px;
+            margin-left: 3vw;
+          }
+          @media all and (max-width: 500px) {
+            width: 6vw;
+            min-width: 30px;
+          }
+        }
+      }
+    }
+
+    .card4{
+      display: flex;
+      width: 100%;
+      padding-top: 15vw;
+      padding-bottom: 15vw;
+      justify-content: center;
+
+      .marquee-container {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 70%;
+        height: 17vw; // 只顯示 top 跑馬燈的高度
+        padding: 0 1vw;
+        display: flex;
+        flex-direction: column; // 上下排列
+        align-items: flex-start;
+        border-radius: 9999px;
+        background-color: transparent;
+        border: 2px solid #232323;
+        position: relative;
+
+
+
+        .marquee {
+          display: inline-block;
+          font-family: 'Faculty Glyphic', sans-serif;
+          animation: marquee 30s linear infinite;
+          font-size: 142px;
+          font-size: 7vw;
+          font-weight: 300; height: 17vw;
+          letter-spacing: 0.04em;
+          will-change: transform;
+          color: #232323;
+          padding: 3.5vw 0;
+          box-sizing: border-box;
+          transition: margin-top 0.5s ease, opacity 0.5s ease; // 加在這裡
+          white-space: nowrap;
+
+
+        }
+        .bottom{
+          background-color: #577084;
+          color: white;
+        }
+        @keyframes marquee {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      }
+
+      .marquee-container:hover {
+
+        .bottom {
+          margin-top: 0vw;
+        }
+        .top{
+          margin-top: -17vw;
+        }
+      }
+    }
+
+  }
