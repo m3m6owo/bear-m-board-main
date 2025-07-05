@@ -460,8 +460,6 @@
         border: 2px solid #232323;
         position: relative;
 
-
-
         .marquee {
           display: inline-block;
           font-family: 'Faculty Glyphic', sans-serif;
@@ -477,11 +475,10 @@
           transition: margin-top 0.5s ease, opacity 0.5s ease; // 加在這裡
           white-space: nowrap;
 
-
         }
         .bottom{
           background-color: #577084;
-          color: white;
+          color: white;   font-size: 7vw;
         }
         @keyframes marquee {
           0% {

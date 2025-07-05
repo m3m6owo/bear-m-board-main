@@ -8,13 +8,11 @@
     @mouseleave="handleMouseLeave"
   >
     <div class="menu-right">
-      <img src="../../assets/img/menu/menu_icon.svg" alt="" />
+      <img src="../../assets/img/menu/menu.svg" alt="" />
     </div>
   </div>
 
   <div class="menu-main" ref="menuRef" v-show="is_Show">
-    <div class="menu-main-bg"><img src="../../assets/img/menu/menu_bg.webp" alt="" /></div>
-
     <div class="left-img-box">
       <div class="images">
         <div
@@ -29,18 +27,11 @@
     </div>
 
     <div class="right-menu-box">
-      <div class="logo-box">
-        <router-link :to="{ name: 'home' }">
-          <img src="../../assets/img/home/logo.svg" alt="" />
-        </router-link>
-      </div>
       <div class="link-box">
         <div class="item" v-for="(item, idx) in menuData" :key="item.id" @mouseenter="showImg(idx)">
-          <div class="en">{{ item.enName }}</div>
-          <div class="zh">{{ item.zhName }}</div>
           <div class="links">
             <router-link :to="{ name: link.link }" v-for="link in item.list" :key="link.id">
-              <div>{{ link.name }}</div>
+              <div class="zh">{{ item.zhName }}</div>
             </router-link>
           </div>
         </div>
@@ -132,8 +123,6 @@ const imgList = [
   new URL('@/assets/img/menu/1.webp', import.meta.url).href,
   new URL('@/assets/img/menu/2.webp', import.meta.url).href,
   new URL('@/assets/img/menu/3.webp', import.meta.url).href,
-  new URL('@/assets/img/menu/4.webp', import.meta.url).href,
-  new URL('@/assets/img/menu/5.webp', import.meta.url).href,
 ]
 
 // getDom 確保是HTMLElement，可用 GSAP 直接操作 style、class 。
@@ -221,14 +210,10 @@ const showClick = (val: boolean) => {
         '<0.2',
       )
 
-      texttl
-        .from('.logo-box a img', { y: '100%', duration: 1, ease: 'myEase' }, '<0.5')
-        .from('.item .en,.item .zh', { y: 70, duration: 0.8, opacity: 0 }, '<0.2')
-        .from([linkBoxes[0].children], { y: 70, opacity: 0, duration: 0.8, stagger: 0.1 }, '<0.3')
-        .from([linkBoxes[1].children], { y: 70, opacity: 0, duration: 0.8, stagger: 0.1 }, '<')
-        .from([linkBoxes[2].children], { y: 70, opacity: 0, duration: 0.8, stagger: 0.1 }, '<')
-        .from([linkBoxes[3].children], { y: 70, opacity: 0, duration: 0.8, stagger: 0.1 }, '<')
-        .from([linkBoxes[4].children], { y: 70, opacity: 0, duration: 0.8, stagger: 0.1 }, '<')
+      // texttl
+      //   .from('.logo-box a img', { y: '100%', duration: 1, ease: 'myEase' }, '<0.5')
+      //   .from('.item .en,.item .zh', { y: 70, duration: 0.8, opacity: 0 }, '<0.2')
+
 
       // Reset all image z-index and clip-path
       imgRefs.value.forEach((el) => {

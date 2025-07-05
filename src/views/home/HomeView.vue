@@ -1,5 +1,6 @@
 <template>
   <div class="home-box main-box">
+
     <div class="card1">
       <div class="bg-box">
         <img src="../../assets/img/home/bg_pinksky.webp" alt="" srcset="" />
@@ -48,7 +49,7 @@
           <div class="right-box">
             <div class="more-box">
               <div class="more">MORE</div>
-              <img src="../../assets/img/home/more_bg2.svg" alt="" srcset="" />
+              <img src="../../assets/img/home/more.svg" alt="" srcset="" />
             </div>
           </div>
         </div>
@@ -70,7 +71,7 @@
 
       <div class="more-box">
         <div class="more">MORE</div>
-        <img src="../../assets/img/home/more_bg2.svg" alt="" srcset="" />
+        <img src="../../assets/img/home/more.svg" alt="" srcset="" />
       </div>
     </div>
 
@@ -92,6 +93,8 @@ import { onMounted, ref } from 'vue'
 
 import gsap from 'gsap'
 import FadeIn from '@/components/transition/FadeIn.vue'
+
+
 import '@/assets/scss/home/_home-view.scss'
 
 import imgSky from '@/assets/img/home/bg_sky3.webp'
