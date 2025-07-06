@@ -7,7 +7,7 @@
     @mouseleave="handleMouseLeave"
   >
     <div class="menu-right">
-      <img src="../../assets/img/menu/menu.svg" alt="" />
+      <img src="../../assets/img/menu/menu_2.svg" alt="" />
     </div>
   </div>
 

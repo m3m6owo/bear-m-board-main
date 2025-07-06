@@ -1,0 +1,42 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #405260;
+  color: #f0f0f0;
+  height: 28vw;
+  z-index: 0;
+  position: sticky;
+  bottom: 0px;
+
+  // FFE2E2
+  //#D2C1B6
+  .footer-container {
+
+    display: flex;
+
+    .footer-link {
+      color: #577084;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: 3vw;
+      font-weight: 300;
+      --tw-text-opacity: 1;
+      color: #fff;
+      mix-blend-mode: difference;
+      will-change: transform;
+      font-family: 'Faculty Glyphic', sans-serif;
+      margin-left: 2vw;
+
+
+    }
+
+    svg {
+      width: 4vw;
+
+      margin-bottom: -1vw;
+    }
+  }
+
+}

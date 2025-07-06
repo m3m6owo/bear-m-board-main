@@ -7,7 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
 
 
 //font-family: "Faculty Glyphic", sans-serif;
@@ -16,7 +16,29 @@
 :root {
   --font-family-title-en: 'Cormorant Garamond', sans-serif;
   --font-family-content-zh: '微軟正黑體';
+  --color-bg1: #dff9fb;
+  --color-bg2: #ffffff;
+  // --color1: 104, 109, 224;
+  // --color2: 126, 214, 223;
+  // --color3: 223, 249, 251;
+  // --color4: 255, 121, 121;
+  // --color5: 149, 175, 192;
+  // --color-interactive: 140, 100, 255;
+  // --color1: 89, 118, 139;
+  // --color2: 115, 149, 200;
+  // --color3: 204, 235, 244;
+  // --color4: 255, 170, 140;
+  // --color5: 140, 170, 165;
+  // --color-interactive: 160, 200, 255;
 
+  --color1: 89, 118, 139;
+  --color2: 15, 149, 200;
+  --color3: 223, 249, 251;
+  --color4: 255, 149, 202;
+  --color5: 149, 175, 192;
+  --color-interactive: 160, 200, 255;
+  --circle-size: 200%;
+  --blending: hard-light;
 }
 
 *,

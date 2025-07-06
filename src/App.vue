@@ -1,8 +1,11 @@
 <template>
   <router-view v-slot="{ Component, route }">
     <Menu />
-    <FadeIn><component :is="Component" :key="route.path"></component></FadeIn>
-    <Footer />
+    <FadeIn>
+      <component :is="Component" :key="route.path"></component>
+    </FadeIn>
+    <Footer v-if="route.name !== 'contact'" />
+
   </router-view>
 </template>
 

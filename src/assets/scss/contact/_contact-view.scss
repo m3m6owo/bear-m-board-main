@@ -1,0 +1,76 @@
+.contact-body{
+  display: flex;
+  flex-direction: column;
+  padding: 7vw 6vw;
+  position: relative;
+  .title-box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1vw;
+    color: #252525;
+    div{
+      font-size: 7.5vw;
+      font-family: "Cormorant Garamond";
+      line-height: .75;
+      font-weight: 400;
+    }
+  }
+
+  .info-box{
+    display: flex;
+    width: 100%;
+justify-content: left;
+margin-top: 2vw; position: relative;
+    .left-box{
+      display: flex;
+      font-family: 'Noto Sans TC';
+      flex-direction: column;
+      @keyframes wave {
+        0% { transform: rotate(0deg); }
+        15% { transform: rotate(15deg); }
+        30% { transform: rotate(-10deg); }
+        45% { transform: rotate(15deg); }
+        60% { transform: rotate(-10deg); }
+        75% { transform: rotate(15deg); }
+        100% { transform: rotate(0deg); }
+      }
+      .greeting{
+        color: #252525;
+        display: flex;
+        font-size: 2.3vw;
+        div{
+          margin-left: 0.3vw;  transition: all 0.3s ease;
+        }
+        &:hover {
+
+          div{
+            animation: wave 1s ease infinite;
+          }
+        }
+      }
+
+      .email{
+        display: flex;
+        flex-direction: column;
+        font-size: 1.7vw;
+        margin-top: 5vw;
+        margin-bottom: 2.5vw;   color: #252525;
+        div{
+          font-size: 1.3vw;
+
+          opacity: .5;
+        }
+      }
+
+    }
+
+
+  }
+
+  .me-img{
+    position: absolute;
+    width: 25vw;
+    top: 15vw;
+    right: 10vw;
+  }
+}

@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import '@/assets/scss/project/_project.scss'
+import '@/assets/scss/project/_project-view.scss'
 import {ref } from 'vue'
 
 const projectList =  ref([
