@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div
     class="menu-icon-container"
@@ -28,14 +27,45 @@
 
     <div class="right-menu-box">
       <div class="link-box">
-        <div class="item" v-for="(item, idx) in menuData" :key="item.id" @mouseenter="showImg(idx)">
+        <div
+          class="item"
+          v-for="(item, idx) in menuData"
+          :key="item.id"
+          @mouseenter="onMouseEnter(idx)"
+          @mouseleave="onMouseLeave"
+          :class="{ 'fade-out': hoveredIndex !== null && hoveredIndex !== idx }"
+          @mouseenter.native="showImg(idx)"
+
+        >
           <div class="links">
-            <router-link :to="{ name: link.link }" v-for="link in item.list" :key="link.id">
+            <router-link
+              v-for="link in item.list"
+              :key="link.id"
+              :to="{ name: link.link }"
+            >
               <div class="zh">{{ item.zhName }}</div>
             </router-link>
           </div>
         </div>
       </div>
+      <router-link to="/" class="back-index-button">
+        <svg
+          class="arrow-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        返回首頁
+      </router-link>
     </div>
 
     <div class="menu-icon-close" @click.stop="showClick(false)">
@@ -45,12 +75,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, nextTick, type ComponentPublicInstance ,watch} from 'vue'
+import { onMounted, ref, nextTick, watch } from 'vue'
 import gsap from 'gsap'
 import CustomEase from 'gsap/CustomEase'
 import { menuData } from './menuData'
 import { useRoute } from 'vue-router'
 import '@/assets/scss/menu/_menu.scss'
+
 const route = useRoute()
 const isMobile = ref(false)
 
@@ -64,6 +95,15 @@ const containerRef = ref<HTMLDivElement | null>(null)
 let animating = false
 /* 紀錄最新的滑鼠事件，配合 requestAnimationFrame 控制更新頻率 */
 let lastEvent: MouseEvent | null = null
+
+// 追蹤 hover 狀態
+const hoveredIndex = ref<number | null>(null)
+const onMouseEnter = (idx: number) => {
+  hoveredIndex.value = idx
+}
+const onMouseLeave = () => {
+  hoveredIndex.value = null
+}
 
 /* 根據滑鼠事件計算並更新 containerRef 元素的 transform */
 const updateTransform = (e: MouseEvent) => {
@@ -94,14 +134,13 @@ const handleMouseMove = (e: MouseEvent) => {
   if (isMobile.value) return // 📱 手機不執行
   lastEvent = e
 
-  // 利用 requestAnimationFrame 做節流，避免每次滑鼠事件都直接觸發 updateTransform
   if (!animating) {
     animating = true
     window.requestAnimationFrame(() => {
       if (lastEvent) {
         updateTransform(lastEvent)
       }
-      animating = false // 結束動畫更新
+      animating = false
     })
   }
 }
@@ -116,21 +155,16 @@ const handleMouseLeave = () => {
 gsap.registerPlugin(CustomEase)
 CustomEase.create('myEase', '0.24,0.43,0.15,0.97')
 
-/* 判斷是否在同一張圖片中用的變數 */
 const currentIndex = ref<number | null>(null)
 
-/* ▼ 1. 圖片清單 */
 const imgList = [
   new URL('@/assets/img/menu/1.webp', import.meta.url).href,
   new URL('@/assets/img/menu/2.webp', import.meta.url).href,
   new URL('@/assets/img/menu/3.webp', import.meta.url).href,
 ]
 
-// getDom 確保是HTMLElement，可用 GSAP 直接操作 style、class 。
-function getDom(el: Element | ComponentPublicInstance | null): HTMLElement | null {
+function getDom(el: any): HTMLElement | null {
   if (!el) return null
-
-  // 如果是 Vue 元件，取 $el；否則是原生 DOM
   if ('$el' in el) {
     return el.$el as HTMLElement
   } else if (el instanceof HTMLElement) {
@@ -139,32 +173,24 @@ function getDom(el: Element | ComponentPublicInstance | null): HTMLElement | nul
   return null
 }
 
-/* DOM refs & 狀態 */
-/* 用來把每個圖片元素的真實 DOM（HTMLElement）存到一個陣列 imgRefs */
 const imgRefs = ref<HTMLElement[]>([])
-const setImgRef = (el: Element | ComponentPublicInstance | null, idx: number) => {
+const setImgRef = (el: any, idx: number) => {
   const dom = getDom(el)
   if (dom) {
-    console.log(111)
     imgRefs.value[idx] = dom
   }
 }
 
-let zCounter = 1 // 每張圖都會把自身 z-index 設成 ++zCounter
+let zCounter = 1
 
-//hover link show image
 const showImg = (idx: number) => {
-  // 若hover到的是正在顯示的圖片，就跳過動畫
   if (currentIndex.value === idx) return
   currentIndex.value = idx
 
   const el = imgRefs.value[idx]
   if (!el) return
 
-  // 每次 hover 前都先重設 clip-path，讓它可以從底部再展開一次
   gsap.set(el, { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.7 })
-
-  // 疊在最上層再展開
   gsap.set(el, { zIndex: ++zCounter })
   gsap.fromTo(
     el,
@@ -175,21 +201,19 @@ const showImg = (idx: number) => {
       scale: 1,
       ease: 'myEase',
       overwrite: true,
-    },
+    }
   )
 }
 
-const showed = new Set<number>() // 記錄「已經展開過」的 index
+const showed = new Set<number>()
 const showClick = (val: boolean) => {
   if (val) {
     is_Show.value = true
     nextTick(() => {
       if (!menuRef.value) return
       const tl = gsap.timeline({})
-      const texttl = gsap.timeline({})
       const linkBoxes = gsap.utils.toArray<HTMLElement>('.link-box .item .links')
 
-      // 開啟動畫（向上展開）
       tl.fromTo(
         menuRef.value,
         { clipPath: 'inset(100% 0% 0% 0%)', opacity: 0 },
@@ -198,7 +222,7 @@ const showClick = (val: boolean) => {
           duration: 1,
           ease: 'expo.inOut',
           opacity: 1,
-        },
+        }
       ).fromTo(
         '.left-img-box .img-box img:first-child',
         { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.4 },
@@ -208,38 +232,30 @@ const showClick = (val: boolean) => {
           ease: 'myEase',
           scale: 1,
         },
-        '<0.2',
+        '<0.2'
       )
 
-      // texttl
-      //   .from('.logo-box a img', { y: '100%', duration: 1, ease: 'myEase' }, '<0.5')
-      //   .from('.item .en,.item .zh', { y: 70, duration: 0.8, opacity: 0 }, '<0.2')
-
-
-      // Reset all image z-index and clip-path
       imgRefs.value.forEach((el) => {
         gsap.set(el, { clipPath: 'inset(100% 0% 0% 0%)', zIndex: 0 })
       })
 
       zCounter = 1
       showed.clear()
-      currentIndex.value = null //確保 showImg(0) 可正常執行
+      currentIndex.value = null
 
-      showImg(0) // 預設顯示第一張
+      showImg(0)
     })
   } else {
     if (!menuRef.value) return
 
     const closeTl = gsap.timeline({})
 
-    // 關閉動畫（向上收起）
     closeTl
       .to('.menu-main .left-img-box .images .img-box', {
         clipPath: 'inset(0% 0% 100% 0%)',
         duration: 1,
         ease: 'myEase',
       })
-
       .to(
         menuRef.value,
         {
@@ -248,11 +264,10 @@ const showClick = (val: boolean) => {
           ease: 'myEase',
           onComplete: () => {
             is_Show.value = false
-            // 重設 clip-path 為初始值（避免下次打開動畫出錯）
             gsap.set(menuRef.value, { clipPath: 'inset(0% 100% 0% 0%)' })
           },
         },
-        '<0.1',
+        '<0.1'
       )
   }
 }
@@ -264,10 +279,9 @@ onMounted(() => {
     })
   }
   nextTick(() => {
-    /* 先把所有圖片藏到底部 */
-    imgRefs.value.forEach((el) => gsap.set(el, { clipPath: 'inset(100% 0% 0% 0%)', zIndex: 0 }))
-
-    /* 目錄內圖片 預設顯示第一張 */
+    imgRefs.value.forEach((el) =>
+      gsap.set(el, { clipPath: 'inset(100% 0% 0% 0%)', zIndex: 0 })
+    )
     showImg(0)
     isMobile.value = 'ontouchstart' in window || navigator.maxTouchPoints > 0
   })
@@ -283,4 +297,16 @@ watch(
 )
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+/* 你既有樣式都保留，新增淡化效果 */
+
+.link-box {
+  .item {
+    transition: all 0.4s ease;
+    &.fade-out {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+}
+</style>

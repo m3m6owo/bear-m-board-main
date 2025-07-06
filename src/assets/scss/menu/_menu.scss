@@ -61,6 +61,9 @@
     }
   }
 
+
+
+
   .left-img-box {
     flex: 3;
     overflow: hidden;
@@ -99,7 +102,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    position: relative;
     flex: 3;
     @media all and (max-width: 1400px) {
       justify-content: center;
@@ -120,10 +123,6 @@
         transition: all 0.5s;
         color: #3d3a39;
 
-        &:hover {
-          transform: translateX(1vw);
-        }
-
         .links {
           display: flex;
           flex-direction: column;
@@ -131,7 +130,10 @@
           padding-top: 3vw;
           position: relative;
           color: #3d3a39;
-
+          &.fade-out {
+            opacity: 0.3;
+            pointer-events: none; // 如果你想淡化的同時不可點擊
+          }
           a {
             font-family: 'Faculty Glyphic', sans-serif;
             font-size: 2.5vw;
@@ -148,11 +150,46 @@
             }
             &:hover {
               div {
-                color: #65839b;
+                // color: #65839b;
                 transition: all 0.5s;
               }
             }
           }
+        }
+      }
+    }
+
+    .back-index-button {
+      position: absolute;
+      top: 1vw;
+      left: 2rem;
+      font-family: "Noto Sans TC";
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: #65839b;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      display: inline-block;
+     font-size: 1vw;
+
+    svg{
+      align-items: center;margin-right: 1vw;
+      width: 1em;
+      height: 1em;
+      vertical-align: -.15em;
+
+    }
+
+
+      &:hover {
+        color: #ffaad4;
+
+
+        span {
+          transform: rotate(10deg) scale(1.2);
+          color: #ffaad4;
         }
       }
     }

@@ -1,0 +1,171 @@
+@use '../utils/mixin' as *;
+@use '../utils/variables' as *;
+
+.project-body {
+  background-color: #ECE8E8;
+  position: relative;
+
+
+  .project-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4vw;
+    padding-bottom: 10vw;
+
+    @media all and (max-width: 1024px) {
+      padding-top: 5vw;
+      padding-bottom: 40vw;
+    }
+    .top-img-box {
+      width: 80%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      height: 23vw;
+      @media all and (max-width: 1024px) {
+        width: 88%;
+      }
+      img {
+        width: 100%;
+        z-index: 1;
+      }
+
+      .top-title-box {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        text-align: center;
+        @media all and (max-width: 1024px) {
+          display: flex;
+          top: 41%;
+        }
+
+        .big-en-title {
+          @include pageBigENTitle();
+
+        }
+      }
+
+
+    }
+
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      align-items: center;
+      padding-top: 6vw;
+
+      @media all and (max-width: 1024px) {
+        padding-top: 10vw;
+      }
+
+      .project-box {
+        display: flex;
+        width: 80%;
+        display: flex;align-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @media all and (max-width: 1024px) {
+          flex-direction: column;
+          // width: 88%;
+          margin: 0 auto;
+        }
+
+        .project-item {
+          width: 23%;
+          display: flex;
+          margin-bottom: 5vw;
+          flex-direction: column;
+          @media all and (max-width: 1024px) {
+
+            flex-basis: initial;
+            margin-bottom: 16vw;
+          }
+
+          @media all and (max-width: 500px) {
+            margin-bottom: 12vw;
+          }
+
+          .img-box{
+            display: flex;
+            width: 18vw;
+            height: 18vw;
+
+            img{
+              width: 100%;
+              object-fit: cover;
+
+            }
+          }
+
+          .project-content {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 0.9vw;
+            @media all and (max-width: 1024px) {
+              margin-top: 3vw;
+            }
+
+            .project-name {
+              font-size:$font-22;
+              color: #232323;
+              font-family: "Noto Serif TC";
+              font-weight: bold;
+              margin-right: 1vw;
+              letter-spacing: 0.2em;
+              align-self: center;
+              @media all and (max-width: 1024px) {
+                font-size: $font-mobile-40;
+              }
+            }
+
+          }
+        }
+        .project-item-box {
+          -webkit-transition: all 0.6s ease-in;
+          -o-transition: all 0.6s ease-in;
+          transition: all 0.6s ease-in;
+          // display: none;
+          // opacity: 0;
+        }
+
+        .project-item-box.active {
+          opacity: 1;
+          display: flex;
+        }
+      }
+
+      .scroll-top-box {
+        display: none;
+
+        @media all and (max-width: 1024px) {
+          display: flex;
+          justify-content: right;
+          cursor: pointer;
+          width: 88%;
+          margin: 0 auto;
+          padding-right: 4vw;
+          margin-top: 2vw;
+        }
+
+        .scroll-top {
+          width: 10vw;
+
+          @media all and (max-width: 500px) {
+            width: 12vw;
+          }
+        }
+      }
+    }
+  }
+}
+

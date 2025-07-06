@@ -1,2 +1,222 @@
-<template></template>
-<script setup lang="ts"></script>
+<template>
+  <div class="project-body">
+
+    <div class="menu-container-box">
+        <div class="left-box">
+            <img src="../assets/images/menu_img.webp" alt="" srcset="">
+        </div>
+        <div class="close-menu">
+            <img src="../assets/images/close.svg" alt="" srcset="">
+            <div>CLOSE</div>
+        </div>
+        <div class="right-box">
+            <div class="top-nav">
+                <div class="nav-item">
+                    <a href="http://">
+                        <img src="../assets/images/fb-2.svg" alt="" srcset="">
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="http://">
+                        <img src="../assets/images/index/line.svg" alt="" srcset="">
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="http://">
+                        <img src="../assets/images/index/yt.svg" alt="" srcset="">
+                    </a>
+                </div>
+            </div>
+            <div class="menu-content">
+                <div class="link-box">
+                    <a href="about.html">
+                        <div class="zh-title">公司沿革</div>
+                        <div class="en-title">ABOUT US</div>
+                    </a>
+                </div>
+                <div class="link-box">
+                    <a href="join_us.html">
+                        <div class="zh-title">招募菁英</div>
+                        <div class="en-title">JOIN US</div>
+                    </a>
+                </div>
+                <div class="link-box">
+                    <a href="project.html">
+                        <div class="zh-title">預推新案</div>
+                        <div class="en-title">PROJECT</div>
+                    </a>
+                </div>
+                <div class="link-box">
+                    <a href="project.html">
+                        <div class="zh-title">熱銷個案</div>
+                        <div class="en-title">POPULAR</div>
+                    </a>
+                </div>
+
+                <div class="link-box">
+                    <a href="history.html">
+                        <div class="zh-title">典藏經典</div>
+                        <div class="en-title">HISTORY</div>
+                    </a>
+                </div>
+                <div class="link-box">
+                    <a href="contact.html">
+                        <div class="zh-title">誠心服務</div>
+                        <div class="en-title">CONTACT</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-screen">
+        <div class="logo-box">
+            <div class="loading-text" id="loading-text">0%</div>
+        </div>
+    </div>
+
+    <div class="project-container">
+        <div class="top-img-box">
+            <picture>
+                <source srcset="../assets/images/project/top_img_mobile.webp" media="(max-width: 1024px)">
+                <img class="top-img" src="../assets/images/project/top_img.webp" alt="" srcset="">
+            </picture>
+            <div class="top-title-box">
+                <div class="big-zh-title">熱銷建案</div>
+                <div class="big-en-title">PROJECT</div>
+            </div>
+            <div class="project-tab-nav-box">
+                <div class="project-nav-item project-nav-active">即將公開</div>
+                <div class="project-nav-item">北部</div>
+                <div class="project-nav-item">中部</div>
+            </div>
+        </div>
+        <div class="page-container">
+            <div class="project-box">
+                <div class="project-item-box active">
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/1.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">新祐京晏</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/2.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">東方大境</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/3.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">臻研研</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/4.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">富宇天雋</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/5.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">豐邑綠園道</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/6.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">富宇森之樹</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/7.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">豐邑一綻</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/8.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">臻研臻心</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-item-box">
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/5.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">豐邑綠園道</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/6.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">富宇森之樹</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/7.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">豐邑一綻</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-item-box">
+                    <div class="project-item">
+                        <a href="./project_content.html">
+                            <img src="../assets/images/project/8.webp" alt="" srcset="">
+                            <div class="project-content">
+                                <div class="project-name">臻研臻心</div>
+                                <div class="project-local">台北市 中山區</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-top-box">
+                <img src="../assets/images/moblie_top.svg" alt="" class="scroll-top">
+            </div>
+
+        </div>
+    </div>
+  </div>
+</template>
+<script setup lang="ts">
+// import '@/assets/scss/about/_about.scss'
+</script>
