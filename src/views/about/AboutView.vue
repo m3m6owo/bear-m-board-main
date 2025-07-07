@@ -77,8 +77,159 @@ import { onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
-
+gsap.registerPlugin(SplitText, ScrollTrigger)
 import '@/assets/scss/about/_about-view.scss'
+const window_width = window.innerWidth
+const titleAni = () => {
+  const title = document.querySelectorAll(
+    '.big-title',
+  )
+  const splittitle = new SplitText(title, { type: 'chars' })
+    let tl = gsap.timeline({})
+
+    tl.from(
+      splittitle.chars,
+      {
+        y: gsap.utils.wrap([70, 70]),
+        filter: 'blur(5px)',
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.Out',
+        stagger: { each: 0.08 },
+      }
+    ).from(
+      '.about-body .top-box .right-box .name,.about-body .top-box .right-box .intro',
+      {
+        y: 70,
+        opacity: 0,
+        duration: 1,
+        stagger: { each: 0.2 },
+      },
+      '<0.3',
+    )
+    .from(
+      '.skills,ul',
+      {
+        y: 70,
+        opacity: 0,
+        duration: 1,
+        stagger: { each: 0.2 },
+      },
+      '<0.35',
+    )
+
+}
+
+const imgAni = () => {
+  const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.about-body .top-box .left-box',
+        start: '-10% center',
+      },
+    })
+
+    tl.from('.about-body .top-box .left-box .img-box',{
+      y:70,
+      duration: 1,
+      opacity:0
+    })
+    .from('.about-body .top-box .left-box .item',{
+      y:100,
+      duration: 1,
+      opacity:0
+    },'<0.3')
+}
+
+const contentAni = () => {
+  const smalltitle = document.querySelectorAll(
+    '.about-body .bottom-box .title',
+  )
+  const splitsmalltitle = new SplitText(smalltitle, { type: 'chars' })
+  const emailtitle = document.querySelectorAll(
+    '.about-body .email-box .title',
+  )
+  const splitemailtitle = new SplitText(emailtitle, { type: 'chars' })
+  const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.about-body .bottom-box',
+        start: '-10% center',
+      },
+    })
+
+    tl.from(
+      splitsmalltitle.chars,
+      {
+        y: gsap.utils.wrap([70, 70]),
+        filter: 'blur(5px)',
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.Out',
+        stagger: { each: 0.08 },
+      }
+    ).from('.personal-statement',{
+      y:70,  opacity: 0,
+        duration: 1,
+    },'<0.3')
+    .from(
+      splitemailtitle.chars,
+      {
+        y: gsap.utils.wrap([-70, 70]),
+        scale:2,
+        filter: 'blur(5px)',
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.Out',
+        stagger: { each: 0.08,from:'center' },
+      },'<0.5'
+    ).from('.about-body .email-box .email',{
+      y:70,
+      opacity: 0,
+        duration: 1,
+    },'<0.8')
+}
+
+const emailAni = () => {
+  const emailtitle = document.querySelectorAll(
+    '.about-body .email-box .title',
+  )
+  const splitemailtitle = new SplitText(emailtitle, { type: 'chars' })
+  if(window_width<=1024){
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.about-body .bottom-box',
+        start: '20% center',
+
+      },
+    })
+    tl.from(
+      splitemailtitle.chars,
+      {
+        y: gsap.utils.wrap([-70, 70]),
+        scale:2,
+        filter: 'blur(5px)',
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.Out',
+        stagger: { each: 0.08,from:'center' },
+      }
+    ).from('.about-body .email-box .email',{
+      y:70,  opacity: 0,
+        duration: 1,
+    },'<0.3')
+  }else{
+
+  }
+
+
+
+}
+
+onMounted(() => {
+  titleAni()
+  imgAni()
+  contentAni()
+ emailAni()
+})
 </script>
 
 <style scoped lang="scss"></style>

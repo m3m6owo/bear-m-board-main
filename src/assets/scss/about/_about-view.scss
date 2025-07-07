@@ -52,7 +52,7 @@
         position: absolute;
         font-size: 12vw;
         font-family: "Ruthie", cursive;
-        left: -5vw;
+        left: -5vw;z-index: 10;
         transform: rotateZ(19deg);
         @media all and (max-width: 1024px) {
           font-size: 23vw;
