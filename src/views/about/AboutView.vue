@@ -1,222 +1,87 @@
 <template>
-  <div class="project-body">
+  <div class="about-body">
+    <div class="big-title">ABOUT ME</div>
+    <div class="top-box">
+      <div class="left-box">
+        <div class="item">*</div>
+        <div class="img-box">
+          <img src="../../assets/img/contact/me.webp" alt="" srcset="" />
+        </div>
+      </div>
 
-    <div class="menu-container-box">
-        <div class="left-box">
-            <img src="../assets/images/menu_img.webp" alt="" srcset="">
+      <div class="right-box">
+        <div class="name">江語珊</div>
+        <div class="intro">
+          你好，我是一名前端工程師，熱情開朗，擅長與團隊成員溝通協作，共同解決問題並創造優質的產品。工作和生活中都愛嘗試新事物，不斷學習成長。
         </div>
-        <div class="close-menu">
-            <img src="../assets/images/close.svg" alt="" srcset="">
-            <div>CLOSE</div>
-        </div>
-        <div class="right-box">
-            <div class="top-nav">
-                <div class="nav-item">
-                    <a href="http://">
-                        <img src="../assets/images/fb-2.svg" alt="" srcset="">
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="http://">
-                        <img src="../assets/images/index/line.svg" alt="" srcset="">
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="http://">
-                        <img src="../assets/images/index/yt.svg" alt="" srcset="">
-                    </a>
-                </div>
-            </div>
-            <div class="menu-content">
-                <div class="link-box">
-                    <a href="about.html">
-                        <div class="zh-title">公司沿革</div>
-                        <div class="en-title">ABOUT US</div>
-                    </a>
-                </div>
-                <div class="link-box">
-                    <a href="join_us.html">
-                        <div class="zh-title">招募菁英</div>
-                        <div class="en-title">JOIN US</div>
-                    </a>
-                </div>
-                <div class="link-box">
-                    <a href="project.html">
-                        <div class="zh-title">預推新案</div>
-                        <div class="en-title">PROJECT</div>
-                    </a>
-                </div>
-                <div class="link-box">
-                    <a href="project.html">
-                        <div class="zh-title">熱銷個案</div>
-                        <div class="en-title">POPULAR</div>
-                    </a>
-                </div>
 
-                <div class="link-box">
-                    <a href="history.html">
-                        <div class="zh-title">典藏經典</div>
-                        <div class="en-title">HISTORY</div>
-                    </a>
-                </div>
-                <div class="link-box">
-                    <a href="contact.html">
-                        <div class="zh-title">誠心服務</div>
-                        <div class="en-title">CONTACT</div>
-                    </a>
-                </div>
-            </div>
+        <div class="skills-box">
+          <div class="skills">技能💫</div>
+          <ul>
+            <li>Vue / Angular</li>
+            <li>JavaScript / TypeScript</li>
+            <li>HTML / CSS / SCSS / RWD</li>
+            <li>GSAP動態效果</li>
+          </ul>
         </div>
+
+        <svg
+          class="arrow"
+          width="64"
+          height="64"
+          viewBox="0 0 64 64"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M32 12V52"
+            stroke="#577084"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16 36L32 52L48 36"
+            stroke="#577084"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
     </div>
 
-    <div class="loading-screen">
-        <div class="logo-box">
-            <div class="loading-text" id="loading-text">0%</div>
-        </div>
+    <div class="bottom-box">
+      <div class="title">My Story</div>
+      <div class="personal-statement">
+        在過去的開發過程中，我能獨立完成整體專案，從 UI/UX 設計、網站架構規劃，
+        到前端開發與動態效果、互動功能製作，都能全程參與並順利執行，
+        也經常與後端工程師密切配合進行資料串接。
+        我擅長與同事溝通協作，重視團隊合作，也樂於提出建議，協助優化整體使用者體驗與開發流程。
+        除了前端技術外，我也具備獨立完成專案、動畫效果設計及功能開發的能力，能根據需求打造符合需求的網站。
+        未來希望能持續精進前端技術，參與更多具挑戰性與影響力的專案，打造更出色的使用者體驗。
+      </div>
     </div>
 
-    <div class="project-container">
-        <div class="top-img-box">
-            <picture>
-                <source srcset="../assets/images/project/top_img_mobile.webp" media="(max-width: 1024px)">
-                <img class="top-img" src="../assets/images/project/top_img.webp" alt="" srcset="">
-            </picture>
-            <div class="top-title-box">
-                <div class="big-zh-title">熱銷建案</div>
-                <div class="big-en-title">PROJECT</div>
-            </div>
-            <div class="project-tab-nav-box">
-                <div class="project-nav-item project-nav-active">即將公開</div>
-                <div class="project-nav-item">北部</div>
-                <div class="project-nav-item">中部</div>
-            </div>
-        </div>
-        <div class="page-container">
-            <div class="project-box">
-                <div class="project-item-box active">
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/1.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">新祐京晏</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/2.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">東方大境</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/3.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">臻研研</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/4.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">富宇天雋</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/5.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">豐邑綠園道</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/6.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">富宇森之樹</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/7.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">豐邑一綻</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/8.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">臻研臻心</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="project-item-box">
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/5.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">豐邑綠園道</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/6.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">富宇森之樹</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/7.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">豐邑一綻</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="project-item-box">
-                    <div class="project-item">
-                        <a href="./project_content.html">
-                            <img src="../assets/images/project/8.webp" alt="" srcset="">
-                            <div class="project-content">
-                                <div class="project-name">臻研臻心</div>
-                                <div class="project-local">台北市 中山區</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="scroll-top-box">
-                <img src="../assets/images/moblie_top.svg" alt="" class="scroll-top">
-            </div>
-
-        </div>
+    <div class="email-box">
+      <div class="title">
+        GET IN TOUCH：）
+      </div>
+      <div class="email">
+        m3m6owo@gmail.com
+      </div>
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-// import '@/assets/scss/about/_about.scss'
+import { onMounted, onUnmounted } from 'vue'
+
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SplitText } from 'gsap/SplitText'
+
+import '@/assets/scss/about/_about-view.scss'
 </script>
+
+<style scoped lang="scss"></style>
