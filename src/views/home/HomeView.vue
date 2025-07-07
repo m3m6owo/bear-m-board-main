@@ -11,7 +11,12 @@
           <defs>
             <filter id="goo">
               <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                result="goo"
+              />
               <feBlend in="SourceGraphic" in2="goo" />
             </filter>
           </defs>
@@ -45,7 +50,7 @@
               </div>
               <div class="black-text black3">使用Vue和GSAP創造出有靈魂的網頁</div>
               <div class="black-text black4">我相信，好的網頁不只要有高效能，</div>
-              <div class="black-text black4">還要能展現精彩的動態效果與互動體驗。</div>
+              <div class="black-text black5">還要能展現精彩的動態效果與互動體驗。</div>
               <div class="blue-box">
                 <div class="blue-text blue1">嗨，我是 Shan 👋</div>
                 <div class="blue-text blue2">
@@ -53,7 +58,7 @@
                 </div>
                 <div class="blue-text blue3">使用Vue和GSAP創造出有靈魂的網頁</div>
                 <div class="blue-text blue4">我相信，好的網頁不只要有高效能，</div>
-                <div class="blue-text blue4">還要能展現精彩的動態效果與互動體驗。</div>
+                <div class="blue-text blue5">還要能展現精彩的動態效果與互動體驗。</div>
               </div>
               <div class="black2-box">
                 <div class="black2-text black2-1">嗨，我是 Shan 👋</div>
@@ -62,7 +67,7 @@
                 </div>
                 <div class="black2-text black2-3">使用Vue和GSAP創造出有靈魂的網頁</div>
                 <div class="black2-text black2-4">我相信，好的網頁不只要有高效能，</div>
-                <div class="black2-text black2-4">還要能展現精彩的動態效果與互動體驗。</div>
+                <div class="black2-text black2-5">還要能展現精彩的動態效果與互動體驗。</div>
               </div>
             </div>
           </div>
@@ -114,10 +119,14 @@ import { onMounted, ref } from 'vue'
 import Menu from '@/components/menu/Menu.vue'
 import gsap from 'gsap'
 import FadeIn from '@/components/transition/FadeIn.vue'
-
 import '@/assets/scss/home/_home-view.scss'
-
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SplitText } from 'gsap/SplitText'
 import imgSky from '@/assets/img/home/bg_sky3.webp'
+
+gsap.registerPlugin(SplitText, ScrollTrigger)
+
+const window_width = window.innerWidth
 
 const handleMouseMove = (e: MouseEvent) => {
   const card = e.currentTarget as HTMLElement
@@ -146,6 +155,358 @@ const projects = ref([
     imgSrc: imgSky,
   },
 ])
+
+const c1Ani = () => {
+  const tl = gsap.timeline({ delay: 0.1 })
+  const hello = document.querySelector('.hello')
+  const jshan = document.querySelector('.jshan')
+
+  if (!hello || !jshan) return
+
+  // 拆字
+  const splitHello = new SplitText(hello, { type: 'chars' })
+  const splitJshan = new SplitText(jshan, { type: 'chars' })
+  tl.to('.gradient-overlay,.gradient-bg', {
+    clipPath: 'inset(0%)',
+    duration: 1,
+    ease: 'expo.in',
+  })
+    .to(
+      splitHello.chars,
+      {
+        x: '-30vw',
+        scale: 1,
+        y: '-7vw',
+        stagger: 0.05,
+        color: 'white',
+        duration: 1,
+      },
+      '<0.75',
+    )
+    .to(
+      '.hello',
+      {
+        scale: 1,
+        duration: 1,
+      },
+      '<',
+    )
+    .to(
+      splitJshan.chars,
+      {
+        x: '23vw',
+        y: '7vw',
+        scale: 1,
+        stagger: {
+          each: '0.05',
+          from: 'end',
+        },
+        color: 'white',
+        duration: 1,
+      },
+      '<',
+    )
+    .to(
+      '.jshan',
+      {
+        scale: 1,
+        duration: 1,
+      },
+      '<',
+    )
+  // .call(() => {
+  //   // 動畫完成時，操作 App.vue footer 元素，加入 sticky class
+  //   const footer = document.querySelector('.footer')
+  //   if (footer) {
+  //     footer.classList.add('sticky')
+  //   }
+  // })
+}
+
+const c2Ani = () => {
+  if (window_width > 1024) {
+    const smallENtitles = document.querySelectorAll('.black-text') // 多個
+    const title1 = Array.from(smallENtitles).map(
+      (heading) =>
+        new SplitText(heading, {
+          type: 'chars,words,lines',
+          linesClass: 'clip-text',
+        }),
+    )
+
+    const smallENtitles2 = document.querySelectorAll('.black2-text') // 多個
+    const title2 = Array.from(smallENtitles2).map(
+      (heading) =>
+        new SplitText(heading, {
+          type: 'chars,words,lines',
+          linesClass: 'clip-text',
+        }),
+    )
+
+    const smallENtitles3 = document.querySelectorAll('.blue-text') // 多個
+    const title3 = Array.from(smallENtitles3).map(
+      (heading) =>
+        new SplitText(heading, {
+          type: 'chars,words,lines',
+          linesClass: 'clip-text',
+        }),
+    )
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.card2',
+        start: 'top top',
+        end: '+=200%',
+        scrub: 2,
+        pin: '.card2',
+        pinSpacing: true,
+      },
+    })
+    tl.to('.black1 .clip-text div div', {
+      clipPath: 'inset(0% 0% 0% 0%)',
+      stagger: {
+        each: 0.05,
+        from: 'start',
+      },
+    })
+      .to(
+        '.black2 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to(
+        '.black3 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to(
+        '.black4 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to(
+        '.black5 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to('.blue1 .clip-text div div', {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        stagger: {
+          each: 0.05,
+          from: 'start',
+        },
+      })
+      .to(
+        '.blue2 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to(
+        '.blue3 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to(
+        '.blue4 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to(
+        '.blue5 .clip-text div div',
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          stagger: {
+            each: 0.05,
+            from: 'start',
+          },
+        },
+        '<',
+      )
+      .to(
+        '.david-ogivy-box .title-box,.david-ogivy-box .bottom-content-box .smaill-title',
+        {
+          opacity: 1,
+          duration: 1,
+        },
+        '<0.3',
+      )
+      .to(
+        '.david-ogivy-box .bottom-content-box .center-box,.david-ogivy-box .bottom-content-box .right-box',
+        {
+          opacity: 1,
+          duration: 1,
+        },
+        '<0.65',
+      )
+  }
+}
+
+const c2TitleAni = () => {
+  const title = document.querySelector('.home-box .card2 .david-ogivy-box .title-box .en-title')
+  if (!title) return
+
+  const split = new SplitText(title, {
+    type: 'chars',
+  })
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.card2',
+      start: 'top center',
+    },
+  })
+  tl.fromTo(
+    split.chars,
+    {
+      autoAlpha: 0,
+      y: 200,
+      filter: 'blur(10px)',
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1,
+      filter: 'blur(0px)',
+      ease: 'power2',
+      stagger: {
+        each: 0.07,
+        from: 'random',
+      },
+    },
+  )
+}
+
+const c3Ani = () => {
+  const title = document.querySelector('.home-box .card3 .title-box .en-title')
+  if (!title) return
+
+  const split = new SplitText(title, {
+    type: 'chars',
+  })
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.card3',
+      start: 'top center',
+    },
+  })
+  tl.fromTo(
+    split.chars,
+    {
+      autoAlpha: 0,
+      y: 200,
+      filter: 'blur(10px)',
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1,
+      filter: 'blur(0px)',
+      ease: 'power2',
+      stagger: {
+        each: 0.07,
+        from: 'random',
+      },
+    },
+  ).from(
+    '.home-box .card3 .project-box div',
+    {
+      y: '70',
+      opacity: 0,
+      stagger: 0.07,
+      duration: 1,
+    },
+    '<0.3',
+  )
+  .from(
+    '.home-box .card3 .more-box',
+    {
+      x: '-70',
+      opacity: 0,
+
+      duration: 1,
+    },
+    '<0.8',
+  )
+}
+
+const c4Ani = () => {
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.card4',
+      start: 'top center',
+      end: '+=300',    // 延長觸發區間，讓動畫更慢
+  scrub: 2,
+    },
+  })
+
+  tl.fromTo(
+    '.home-box .card4 .marquee-container',
+    {
+      width:'20%',
+    },
+    {
+      width:'70%',
+      duration: 1.5,
+    }
+  )
+
+}
+
+onMounted(() => {
+  // document.body.style.overflow = 'hidden'
+  c1Ani()
+
+  setTimeout(() => {
+    // document.body.style.overflow = 'auto'
+  }, 2000)
+
+  c2TitleAni()
+  c2Ani()
+  c3Ani()
+  c4Ani()
+})
 </script>
 
 <style scoped></style>

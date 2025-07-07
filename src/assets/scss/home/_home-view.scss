@@ -1,5 +1,6 @@
 @use '../utils/mixin'as *;
 @use '../main'as *;
+
 .home-box {
   display: flex;
   position: relative;
@@ -13,6 +14,16 @@
     height: 100svh;
     overflow: hidden;
     position: relative;
+    background: white;
+    z-index: 10;
+
+    .fullscreen-mask {
+      position: fixed;
+      inset: 0;
+      background: #ECE8E8; // 跟背景色一樣，或改為黑色也可
+      z-index: 999;
+      pointer-events: none;
+    }
 
     .gradient-overlay {
       position: absolute;
@@ -21,9 +32,10 @@
       background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
           rgba(160, 196, 255, 0.5) 0%,
           rgba(255, 198, 255, 0.3) 40%,
-          transparent 80%);
+          transparent 80%); will-change: transform;
       transition: background 0.2s ease;
       z-index: 1;
+      clip-path: inset(40%);
     }
 
 
@@ -32,9 +44,11 @@
       0% {
         transform: rotate(0deg);
       }
+
       50% {
         transform: rotate(180deg);
       }
+
       100% {
         transform: rotate(360deg);
       }
@@ -44,9 +58,11 @@
       0% {
         transform: translateY(-50%);
       }
+
       50% {
         transform: translateY(50%);
       }
+
       100% {
         transform: translateY(-50%);
       }
@@ -56,9 +72,11 @@
       0% {
         transform: translateX(-50%) translateY(-10%);
       }
+
       50% {
         transform: translateX(50%) translateY(10%);
       }
+
       100% {
         transform: translateX(-50%) translateY(-10%);
       }
@@ -73,14 +91,15 @@
       background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
       top: 0;
       left: 0;
-
+      clip-path: inset(40%);
+      will-change: transform;
       svg {
         display: none;
       }
 
 
       .gradients-container {
-        filter: url(#goo) blur(40px) ;
+        filter: url(#goo) blur(40px);
         width: 100%;
         height: 100%;
       }
@@ -178,64 +197,6 @@
         opacity: 0.7;
       }
     }
-    // 浮動圓圈容器
-    // .floating-circles {
-    //   position: absolute;
-    //   inset: 0;
-    //   z-index: 1;
-    //   pointer-events: none;
-
-    //   .circle {
-    //     position: absolute;
-    //     width: 25vw;
-    //     height: 25vw;
-    //     border-radius: 50%;
-    //     background: radial-gradient(circle, rgba(160, 196, 255, 0.7), transparent 70%);
-    //     filter: blur(20px);
-    //     animation: float 20s ease-in-out infinite alternate;
-    //   }
-
-    //   .circle1 {
-    //     top: 10%;
-    //     left: 20%;
-    //     background: radial-gradient(circle, rgba(160, 196, 255, 0.75), transparent 70%);
-    //     animation-delay: 0s;
-    //   }
-
-    //   .circle2 {
-    //     top: 50%;
-    //     left: 60%;
-    //     width: 20vw;
-    //     height: 20vw;
-    //     background: radial-gradient(circle, rgba(255, 198, 255, 0.75), transparent 70%);
-    //     animation-delay: 5s;
-    //   }
-
-    //   .circle3 {
-    //     top: 70%;
-    //     left: 30%;
-    //     width: 30vw;
-    //     height: 30vw;
-    //     background: radial-gradient(circle, rgba(255, 255, 200, 0.65), transparent 70%);
-    //     animation-delay: 10s;
-    //   }
-    // }
-
-    // // 飄動動畫
-    // @keyframes float {
-    //   0% {
-    //     transform: translate(0, 0) scale(1);
-    //   }
-
-    //   50% {
-    //     transform: translate(30px, -20px) scale(1.1);
-    //   }
-
-    //   100% {
-    //     transform: translate(-20px, 30px) scale(1);
-    //   }
-    // }
-
 
     .bg-box {
       width: 100%;
@@ -251,24 +212,29 @@
 
     .hello {
       position: absolute;
-      top: 0vw;
-      left: 3vw;
+      top: 10vw;
+      scale: 0.8;
+      left: 35vw;
       color: white;
       font-size: 10vw;
-
-      font-family: 'Jost';
+      color: #405260;
+      font-family: "Jost";
+      z-index: 10;
 
     }
 
     .jshan {
+      scale: 0.8;
       position: absolute;
-      right: 4vw;
-      bottom: 1vw;
+      right: 30vw;
+      bottom: 13vw;
       color: white;
       font-weight: 500;
       font-size: 10vw;
       font-family: "Dancing Script", cursive;
       font-style: italic;
+      z-index: 10;
+      color: #405260;
     }
 
     .small-title {
@@ -287,6 +253,7 @@
     display: flex;
     width: 100%;
     height: 100svh;
+    overflow: hidden;
 
     .david-ogivy-box {
       display: flex;
@@ -312,7 +279,6 @@
         flex-direction: column;
         margin-bottom: 3vw;
 
-        // opacity: 0;
         @media all and (max-width: 1024px) {
           opacity: 1;
           flex-direction: column-reverse;
@@ -325,16 +291,19 @@
           font-family: "Cormorant Garamond";
           color: #232323;
           font-weight: bold;
+          overflow: hidden;
           letter-spacing: 0.05em;
+
+          div {
+            overflow: hidden;
+
+          }
 
           @media all and (max-width: 1024px) {
             color: #232323;
-            margin-right: 0vw;
             margin-top: 1.5vw;
           }
         }
-
-
       }
 
       .bottom-content-box {
@@ -349,196 +318,48 @@
           width: 100%;
         }
 
-        @media all and (max-width: 500px) {
-          margin-top: 10vw;
-        }
-
         .left-box {
           font-family: "微軟正黑體";
 
-          .black-box {
-
+          .black-box,
+          .blue-box,
+          .black2-box {
             font-size: 2vw;
             display: flex;
             position: relative;
             flex-direction: column;
             line-height: 2;
 
+            // 統一 .clip-text 效果
+            .clip-text {
+              div {
+                div {
+                  clip-path: inset(100% 0% 0% 0%);
+                }
+              }
+            }
+          }
+
+          .black-box {
+            color: #648197;
+
             @media all and (max-width: 1024px) {
               display: none;
             }
+          }
 
-            .black1 {
-              color: #232323;
-              z-index: 1;
+          .blue-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #232323;
+          }
 
-              .clip-text {
-                div {
-                  div {
-                    clip-path: inset(100% 0% 0% 0%);
-                  }
-                }
-              }
-            }
-
-            .black2 {
-              color: #232323;
-              z-index: 1;
-
-              .clip-text {
-                div {
-                  div {
-                    clip-path: inset(100% 0% 0% 0%);
-                  }
-                }
-              }
-            }
-
-            .black3 {
-              z-index: 1;
-              color: #232323;
-
-              .clip-text {
-                div {
-                  div {
-                    clip-path: inset(100% 0% 0% 0%);
-                  }
-                }
-              }
-            }
-
-            .black4 {
-              z-index: 1;
-              color: #232323;
-
-              .clip-text {
-                div {
-                  div {
-                    clip-path: inset(100% 0% 0% 0%);
-                  }
-                }
-              }
-            }
-
-            .blue-box {
-              line-height: 2;
-              font-size: 2vw;
-              display: flex;
-              position: absolute;
-              flex-direction: column;
-              color: #3f6687;
-              top: 0px;
-              left: 0px;
-
-              .blue1 {
-                z-index: 10;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-
-              .blue2 {
-                z-index: 10;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-
-              .blue3 {
-                z-index: 10;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-
-              .blue4 {
-                z-index: 10;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-            }
-
-            .black2-box {
-              font-size: 2vw;
-              display: flex;
-              position: absolute;
-              flex-direction: column;
-              top: 0px;
-              left: 0px;
-
-              .black2-1 {
-                z-index: 20;
-                color: #232323;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-
-              .black2-2 {
-                z-index: 20;
-                color: #232323;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-
-              .black2-3 {
-                z-index: 20;
-                color: #232323;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-
-              .black2-4 {
-                color: #232323;
-                z-index: 20;
-
-                .clip-text {
-                  div {
-                    div {
-                      clip-path: inset(100% 0% 0% 0%);
-                    }
-                  }
-                }
-              }
-            }
+          .black2-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #232323;
           }
 
           .mobile-black-box {
@@ -559,7 +380,6 @@
           }
         }
 
-
         .right-box {
           display: flex;
 
@@ -576,7 +396,6 @@
 
             @media all and (max-width: 1024px) {
               justify-content: center;
-
             }
 
             @media all and (max-width: 500px) {
@@ -608,6 +427,7 @@
       }
     }
   }
+
 
   .card3 {
     display: flex;
@@ -716,6 +536,7 @@
 
     .marquee-container {
       overflow: hidden;
+      transform-origin: center center;
       white-space: nowrap;
       width: 70%;
       height: 17vw; // 只顯示 top 跑馬燈的高度
@@ -727,6 +548,7 @@
       background-color: transparent;
       border: 2px solid #232323;
       position: relative;
+      will-change: transform;
 
       .marquee {
         display: inline-block;

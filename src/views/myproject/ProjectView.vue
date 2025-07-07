@@ -28,13 +28,15 @@
           <img src="../assets/images/moblie_top.svg" alt="" class="scroll-top" />
         </div>
       </div>
-    </div>
+    </div>  <Footer></Footer>
   </div>
+
 </template>
 
 <script setup lang="ts">
+import Footer from '@/components/footer/FooterComponent.vue'
 import '@/assets/scss/project/_project-view.scss'
-import {ref } from 'vue'
+import { ref } from 'vue'
 
 const projectList =  ref([
   {
