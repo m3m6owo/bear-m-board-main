@@ -22,7 +22,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -93,12 +93,15 @@ const titleAni = () => {
 
 }
 
+let clickHandler: (e: MouseEvent) => void // 外部宣告變數，保證作用域一致
+
 onMounted(() => {
   const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0
   titleAni()
-  if (isMobile) return // 手機版直接不註冊事件
+  if (isMobile) return
 
-  const clickHandler = (e: MouseEvent) => {
+  // ✅ 直接對外部宣告的變數賦值，不要用 const
+  clickHandler = (e: MouseEvent) => {
     const emojis = ['✨', '❄️', '🌷', '🌼']
     const emoji = document.createElement('div')
     emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)]
@@ -125,4 +128,11 @@ onMounted(() => {
 
   window.addEventListener('click', clickHandler)
 })
+
+onUnmounted(() => {
+  if (clickHandler) {
+    window.removeEventListener('click', clickHandler)
+  }
+})
+
 </script>

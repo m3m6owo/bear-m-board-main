@@ -10,22 +10,26 @@
   transition: transform 0.2s ease-out;
   padding: 1.5vw 1vw;
   background-color: #ffffff4d;
-  cursor: pointer;-webkit-backdrop-filter: blur(8px);
-  position: fixed;border-radius: 0.6rem !important;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  position: fixed;
+  border-radius: 0.6rem !important;
   backdrop-filter: blur(8px);
+
   @media all and (max-width: 1024px) {
     width: 14vw;
     padding: 3vw 1vw;
-    background-color:unset;
+    background-color: unset;
   }
 
   .menu-right {
     width: 3vw;
     cursor: pointer;
     position: relative;
+
     @media all and (max-width: 1024px) {
-      width:18vw;
-     }
+      width: 18vw;
+    }
 
 
 
@@ -49,9 +53,11 @@
   bottom: 0;
   left: 0;
   overflow: hidden;
+
   @media all and (max-width: 1024px) {
- flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
+
   .menu-icon-close {
     position: absolute;
     right: 2vw;
@@ -59,16 +65,21 @@
     width: 4vw;
     cursor: pointer;
     z-index: 30;
+
     @media all and (max-width: 1400px) {
       width: 6vw;
     }
+
     @media all and (max-width: 1024px) {
-      width: 14vw;   right: 4vw;
-      top:5.5vw;
-       }
+      width: 14vw;
+      right: 4vw;
+      top: 5.5vw;
+    }
+
     img {
       transition: scale 0.2s ease-in-out;
     }
+
     &:hover {
       img {
         scale: 1.15;
@@ -89,6 +100,7 @@
       overflow: hidden;
       position: relative;
       width: 100%;
+
       .img-box {
         top: 0;
         right: 0;
@@ -98,6 +110,7 @@
         will-change: clip-path;
         inset: 0;
         z-index: 0;
+
         img {
           height: 100%;
           max-width: 100%;
@@ -119,6 +132,7 @@
     justify-content: center;
     position: relative;
     flex: 3;
+
     @media all and (max-width: 1400px) {
       justify-content: center;
       padding-top: 0vw;
@@ -129,9 +143,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+
       @media all and (max-width: 1400px) {
         margin-top: 10vw;
       }
+
       .item {
         display: flex;
         flex-direction: column;
@@ -151,10 +167,12 @@
           &.fade-out {
             opacity: 0.3;
             pointer-events: none; // 如果你想淡化的同時不可點擊
+
             @media all and (max-width: 1024px) {
-              opacity:1;
-               }
+              opacity: 1;
+            }
           }
+
           a {
             font-family: 'Faculty Glyphic', sans-serif;
             font-size: 2.5vw;
@@ -162,16 +180,21 @@
             color: #3d3a39;
             font-weight: 400;
             margin-bottom: 1vw;
+
             @media all and (max-width: 1400px) {
               font-size: 1.4vw;
               margin-bottom: 1.5vw;
             }
+
             @media all and (max-width: 1024px) {
-              font-size: 5vw; margin-bottom: 6vw;
-               }
+              font-size: 5vw;
+              margin-bottom: 6vw;
+            }
+
             div {
               transition: all 0.5s;
             }
+
             &:hover {
               div {
                 // color: #65839b;
@@ -185,7 +208,7 @@
 
     .back-index-button {
       position: absolute;
-      top: 1vw;
+      top: 1.5vw;
       left: 2rem;
       font-family: "Noto Sans TC";
       font-size: 1rem;
@@ -193,38 +216,47 @@
       color: #65839b;
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease-in-out;
       overflow: hidden;
       display: inline-block;
-     font-size: 1vw;
-     @media all and (max-width: 1024px) {
-      font-size: 3.75vw;   top: 4vw;
-      left: 4vw;
-       }
-    svg{
-      align-items: center;margin-right: 1vw;
-      width: 1em;
-      height: 1em;
-      vertical-align: -.15em;
+      font-size: 1vw;
+
       @media all and (max-width: 1024px) {
-        width: 6vw;
-        height:  6vw;   vertical-align: -.4em;
-         }
-    }
+        font-size: 3.75vw;
+        top: 4vw;
+        left: 4vw;
+      }
+
+      svg {
+        align-items: center;
+        margin-right: 0.3vw;
+        width: 1em;
+        height: 1em;
+
+        vertical-align: -.15em;
+
+        @media all and (max-width: 1024px) {
+          width: 6vw;
+          height: 6vw;
+          vertical-align: -.4em;
+        }
+      }
 
 
       &:hover {
-        color: #ffaad4;
+      transform: translateX(-1vw);
 
         @media all and (max-width: 1024px) {
           color: #65839b;
-           }
+        }
+
         span {
           transform: rotate(10deg) scale(1.2);
           color: #ffaad4;
+
           @media all and (max-width: 1024px) {
             color: #65839b;
-             }
+          }
         }
       }
     }
