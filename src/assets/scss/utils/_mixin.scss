@@ -22,7 +22,7 @@
   font-size: $font-68;
   font-family: "Cormorant Garamond";
   @media all and (max-width: 1024px) {
-    font-size: $font-mobile-45;
+    font-size: $font-mobile-45;        font-size: 5.8vw;
   }
 }
 
@@ -36,7 +36,7 @@
   font-weight: 500;
   @media all and (max-width: 1024px) {
     writing-mode: initial;
-    font-size: $font-mobile-40;
+    font-size: $font-mobile-40;   font-size: 7vw;
   }
   &:after {
     content: " ";

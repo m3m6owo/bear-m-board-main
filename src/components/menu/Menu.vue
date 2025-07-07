@@ -3,8 +3,8 @@
     class="menu-icon-container"
     ref="containerRef"
     @click.stop="showClick(true)"
-    @mousemove="handleMouseMove"
-    @mouseleave="handleMouseLeave"
+    v-on:mousemove="!isMobile ? handleMouseMove : null"
+    v-on:mouseleave="!isMobile ? handleMouseLeave : null"
   >
     <div class="menu-right">
       <img src="../../assets/img/menu/menu_2.svg" alt="" />
@@ -31,11 +31,10 @@
           class="item"
           v-for="(item, idx) in menuData"
           :key="item.id"
-          @mouseenter="onMouseEnter(idx)"
-          @mouseleave="onMouseLeave"
+          @mouseenter="!isMobile ? onMouseEnter(idx) : null"
+          @mouseleave="!isMobile ? onMouseLeave() : null"
           :class="{ 'fade-out': hoveredIndex !== null && hoveredIndex !== idx }"
-          @mouseenter.native="showImg(idx)"
-
+          @mouseenter.native="!isMobile ? showImg(idx) : null"
         >
           <div class="links">
             <router-link
@@ -99,9 +98,11 @@ let lastEvent: MouseEvent | null = null
 // 追蹤 hover 狀態
 const hoveredIndex = ref<number | null>(null)
 const onMouseEnter = (idx: number) => {
+  if (isMobile.value) return
   hoveredIndex.value = idx
 }
 const onMouseLeave = () => {
+  if (isMobile.value) return
   hoveredIndex.value = null
 }
 
@@ -131,7 +132,7 @@ const resetTransform = () => {
 
 /* 處理滑鼠移動事件 */
 const handleMouseMove = (e: MouseEvent) => {
-  if (isMobile.value) return // 📱 手機不執行
+  if (isMobile.value) return // 手機不執行
   lastEvent = e
 
   if (!animating) {
@@ -147,7 +148,7 @@ const handleMouseMove = (e: MouseEvent) => {
 
 /* 滑鼠離開容器時呼叫，重置 transform */
 const handleMouseLeave = () => {
-  if (isMobile.value) return // 📱 手機不執行
+  if (isMobile.value) return // 手機不執行
   resetTransform()
 }
 
@@ -184,6 +185,7 @@ const setImgRef = (el: any, idx: number) => {
 let zCounter = 1
 
 const showImg = (idx: number) => {
+  if (isMobile.value) return
   if (currentIndex.value === idx) return
   currentIndex.value = idx
 
@@ -245,12 +247,37 @@ const showClick = (val: boolean) => {
 
       showImg(0)
     })
+    if (isMobile.value) {
+      const mobileTL  = gsap.timeline({})
+      mobileTL.fromTo(
+        '.left-img-box .img-box:first-child',
+        { clipPath: 'inset(100% 0% 0% 0%)', },
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 1,
+          ease: 'myEase',
+
+        },
+
+      )
+    }
   } else {
     if (!menuRef.value) return
 
-    const closeTl = gsap.timeline({})
-
-    closeTl
+    if (isMobile.value) {
+      // 手機版直接淡出
+      console.log(1)
+      gsap.to(menuRef.value, {
+        opacity: 0,
+        duration: 1,
+        onComplete: () => {
+          gsap.set(menuRef.value, { opacity: 1, clipPath: 'inset(100% 0% 0% 0%)' })
+          is_Show.value = false
+        },
+      })
+    } else {
+      const closeTl = gsap.timeline({})
+      closeTl
       .to('.menu-main .left-img-box .images .img-box', {
         clipPath: 'inset(0% 0% 100% 0%)',
         duration: 1,
@@ -269,6 +296,8 @@ const showClick = (val: boolean) => {
         },
         '<0.1'
       )
+    }
+
   }
 }
 

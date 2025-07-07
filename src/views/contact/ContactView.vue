@@ -23,36 +23,42 @@
 <script setup lang="ts">
 import '@/assets/scss/contact/_contact-view.scss'
 
-import { onMounted, ref } from 'vue';
-
+import { onMounted } from 'vue'
 
 onMounted(() => {
-  window.addEventListener('click', (e) => {
-    const emojis = ['✨', '❄️', '🌷', '🌼'];
-    const emoji = document.createElement('div');
-    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    emoji.style.position = 'fixed';
-    emoji.style.left = `${e.clientX}px`;
-    emoji.style.top = `${e.clientY}px`;
-    emoji.style.fontSize = '2rem';
-    emoji.style.pointerEvents = 'none';
-    emoji.style.zIndex = '9999';
-    emoji.style.opacity = '1';
-    emoji.style.transition = 'transform 1s ease, opacity 1s ease';
+  const isMobile =
+    'ontouchstart' in window || navigator.maxTouchPoints > 0
 
-    document.body.appendChild(emoji);
+  if (isMobile) return // 手機版直接不註冊事件
 
-    // 觸發動畫
+  const clickHandler = (e: MouseEvent) => {
+    const emojis = ['✨', '❄️', '🌷', '🌼']
+    const emoji = document.createElement('div')
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)]
+    emoji.style.position = 'fixed'
+    emoji.style.left = `${e.clientX}px`
+    emoji.style.top = `${e.clientY}px`
+    emoji.style.fontSize = '2rem'
+    emoji.style.pointerEvents = 'none'
+    emoji.style.zIndex = '9999'
+    emoji.style.opacity = '1'
+    emoji.style.transition = 'transform 1s ease, opacity 1s ease'
+
+    document.body.appendChild(emoji)
+
     requestAnimationFrame(() => {
-      emoji.style.transform = 'translateY(-80px) scale(1.5)';
-      emoji.style.opacity = '0';
-    });
+      emoji.style.transform = 'translateY(-80px) scale(1.5)'
+      emoji.style.opacity = '0'
+    })
 
     setTimeout(() => {
-      emoji.remove();
-    }, 1000);
-  });
-});
+      emoji.remove()
+    }, 1000)
+  }
+
+  window.addEventListener('click', clickHandler)
+})
+
 
 
 </script>

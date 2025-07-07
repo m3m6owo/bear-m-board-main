@@ -8,20 +8,25 @@
   transform-style: preserve-3d;
   perspective: 800px;
   transition: transform 0.2s ease-out;
-
   padding: 1.5vw 1vw;
   background-color: #ffffff4d;
   cursor: pointer;-webkit-backdrop-filter: blur(8px);
   position: fixed;border-radius: 0.6rem !important;
   backdrop-filter: blur(8px);
-  @media all and (max-width: 1400px) {
-    left: 3vw;
-    top: 2vw;
+  @media all and (max-width: 1024px) {
+    width: 14vw;
+    padding: 3vw 1vw;
+    background-color:unset;
   }
+
   .menu-right {
     width: 3vw;
     cursor: pointer;
     position: relative;
+    @media all and (max-width: 1024px) {
+      width:18vw;
+     }
+
 
 
     img {
@@ -44,7 +49,9 @@
   bottom: 0;
   left: 0;
   overflow: hidden;
-
+  @media all and (max-width: 1024px) {
+ flex-direction: column-reverse;
+  }
   .menu-icon-close {
     position: absolute;
     right: 2vw;
@@ -55,7 +62,10 @@
     @media all and (max-width: 1400px) {
       width: 6vw;
     }
-
+    @media all and (max-width: 1024px) {
+      width: 14vw;   right: 4vw;
+      top:5.5vw;
+       }
     img {
       transition: scale 0.2s ease-in-out;
     }
@@ -119,12 +129,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-
+      @media all and (max-width: 1400px) {
+        margin-top: 10vw;
+      }
       .item {
         display: flex;
         flex-direction: column;
         align-items: center;
-
         transition: all 0.5s;
         color: #3d3a39;
 
@@ -135,9 +146,14 @@
           padding-top: 3vw;
           position: relative;
           color: #3d3a39;
+
+
           &.fade-out {
             opacity: 0.3;
             pointer-events: none; // 如果你想淡化的同時不可點擊
+            @media all and (max-width: 1024px) {
+              opacity:1;
+               }
           }
           a {
             font-family: 'Faculty Glyphic', sans-serif;
@@ -150,6 +166,9 @@
               font-size: 1.4vw;
               margin-bottom: 1.5vw;
             }
+            @media all and (max-width: 1024px) {
+              font-size: 5vw; margin-bottom: 6vw;
+               }
             div {
               transition: all 0.5s;
             }
@@ -178,23 +197,34 @@
       overflow: hidden;
       display: inline-block;
      font-size: 1vw;
-
+     @media all and (max-width: 1024px) {
+      font-size: 3.75vw;   top: 4vw;
+      left: 4vw;
+       }
     svg{
       align-items: center;margin-right: 1vw;
       width: 1em;
       height: 1em;
       vertical-align: -.15em;
-
+      @media all and (max-width: 1024px) {
+        width: 6vw;
+        height:  6vw;   vertical-align: -.4em;
+         }
     }
 
 
       &:hover {
         color: #ffaad4;
 
-
+        @media all and (max-width: 1024px) {
+          color: #65839b;
+           }
         span {
           transform: rotate(10deg) scale(1.2);
           color: #ffaad4;
+          @media all and (max-width: 1024px) {
+            color: #65839b;
+             }
         }
       }
     }

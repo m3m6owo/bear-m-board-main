@@ -45,17 +45,13 @@
           <div class="left-box">
             <div class="black-box">
               <div class="black-text black1">嗨，我是 Shan 👋</div>
-              <div class="black-text black2">
-                我是一名熱愛打造有趣的動態效果與好用介面的前端工程師，
-              </div>
+              <div class="black-text black2">我是熱愛打造有趣的動態效果與介面的前端工程師，</div>
               <div class="black-text black3">使用Vue和GSAP創造出有靈魂的網頁</div>
               <div class="black-text black4">我相信，好的網頁不只要有高效能，</div>
               <div class="black-text black5">還要能展現精彩的動態效果與互動體驗。</div>
               <div class="blue-box">
                 <div class="blue-text blue1">嗨，我是 Shan 👋</div>
-                <div class="blue-text blue2">
-                  我是一名熱愛打造有趣的動態效果與好用介面的前端工程師，
-                </div>
+                <div class="blue-text blue2">我是熱愛打造有趣的動態效果與介面的前端工程師，</div>
                 <div class="blue-text blue3">使用Vue和GSAP創造出有靈魂的網頁</div>
                 <div class="blue-text blue4">我相信，好的網頁不只要有高效能，</div>
                 <div class="blue-text blue5">還要能展現精彩的動態效果與互動體驗。</div>
@@ -63,7 +59,7 @@
               <div class="black2-box">
                 <div class="black2-text black2-1">嗨，我是 Shan 👋</div>
                 <div class="black2-text black2-2">
-                  我是一名熱愛打造有趣的動態效果與好用介面的前端工程師，
+                  我是熱愛打造有趣的動態效果與介面的前端工程師，
                 </div>
                 <div class="black2-text black2-3">使用Vue和GSAP創造出有靈魂的網頁</div>
                 <div class="black2-text black2-4">我相信，好的網頁不只要有高效能，</div>
@@ -157,70 +153,97 @@ const projects = ref([
 ])
 
 const c1Ani = () => {
-  const tl = gsap.timeline({ delay: 0.1 })
   const hello = document.querySelector('.hello')
   const jshan = document.querySelector('.jshan')
-
+  const isMobile = window.innerWidth <= 1024
   if (!hello || !jshan) return
 
   // 拆字
   const splitHello = new SplitText(hello, { type: 'chars' })
   const splitJshan = new SplitText(jshan, { type: 'chars' })
-  tl.to('.gradient-overlay,.gradient-bg', {
-    clipPath: 'inset(0%)',
-    duration: 1,
-    ease: 'expo.in',
-  })
-    .to(
+
+  if (window_width <= 1024) {
+    const tl = gsap.timeline({ delay: 0.1 })
+    tl.to('.gradient-overlay,.gradient-bg', {
+      clipPath: 'inset(0%)',
+      duration: 1,
+      ease: 'expo.in',
+    }).from(
       splitHello.chars,
       {
-        x: '-30vw',
-        scale: 1,
-        y: '-7vw',
-        stagger: 0.05,
-        color: 'white',
+        x: gsap.utils.wrap([-70, 70]),
+        filter: 'blur(5px)',
+        opacity: 0,
         duration: 1,
+        ease: 'power1.Out',
+        stagger: { each: 0.05, from: 'center' },
       },
       '<0.75',
     )
-    .to(
-      '.hello',
-      {
-        scale: 1,
-        duration: 1,
-      },
-      '<',
-    )
-    .to(
+    .from(
       splitJshan.chars,
       {
-        x: '23vw',
-        y: '7vw',
-        scale: 1,
-        stagger: {
-          each: '0.05',
-          from: 'end',
+        x: gsap.utils.wrap([-70, 70]),
+        filter: 'blur(5px)',
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.Out',
+        stagger: { each: 0.05, from: 'center' },
+      },
+      '<',
+    )
+  } else {
+    const tl = gsap.timeline({ delay: 0.1 })
+    tl.to('.gradient-overlay,.gradient-bg', {
+      clipPath: 'inset(0%)',
+      duration: 1,
+      ease: 'expo.in',
+    })
+      .to(
+        splitHello.chars,
+        {
+          x: '-30vw',
+          scale: 1,
+          y: '-7vw',
+          stagger: 0.05,
+          color: 'white',
+          duration: 1,
         },
-        color: 'white',
-        duration: 1,
-      },
-      '<',
-    )
-    .to(
-      '.jshan',
-      {
-        scale: 1,
-        duration: 1,
-      },
-      '<',
-    )
-  // .call(() => {
-  //   // 動畫完成時，操作 App.vue footer 元素，加入 sticky class
-  //   const footer = document.querySelector('.footer')
-  //   if (footer) {
-  //     footer.classList.add('sticky')
-  //   }
-  // })
+        '<0.75',
+      )
+      .to(
+        '.hello',
+        {
+          scale: 1,
+          duration: 1,
+        },
+        '<',
+      )
+      .to(
+        splitJshan.chars,
+        {
+          x: '23vw',
+          scale: 1,
+          y: '7vw',
+
+          stagger: {
+            each: '0.05',
+            from: 'end',
+          },
+          color: 'white',
+          duration: 1,
+        },
+        '<',
+      )
+      .to(
+        '.jshan',
+        {
+          scale: 1,
+          duration: 1,
+        },
+        '<',
+      )
+  }
 }
 
 const c2Ani = () => {
@@ -383,124 +406,253 @@ const c2Ani = () => {
 }
 
 const c2TitleAni = () => {
-  const title = document.querySelector('.home-box .card2 .david-ogivy-box .title-box .en-title')
-  if (!title) return
+  if (window_width <= 1024) {
+    const title = document.querySelector('.home-box .card2 .david-ogivy-box .title-box .en-title')
+    if (!title) return
 
-  const split = new SplitText(title, {
-    type: 'chars',
-  })
+    const split = new SplitText(title, {
+      type: 'chars',
+    })
 
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.card2',
-      start: 'top center',
-    },
-  })
-  tl.fromTo(
-    split.chars,
-    {
-      autoAlpha: 0,
-      y: 200,
-      filter: 'blur(10px)',
-    },
-    {
-      autoAlpha: 1,
-      y: 0,
-      duration: 1,
-      filter: 'blur(0px)',
-      ease: 'power2',
-      stagger: {
-        each: 0.07,
-        from: 'random',
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.card2',
+        start: 'top center',
       },
-    },
-  )
+    })
+    tl.fromTo(
+      split.chars,
+      {
+        autoAlpha: 0,
+        y: 100,
+        filter: 'blur(10px)',
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        filter: 'blur(0px)',
+        ease: 'power2',
+        stagger: {
+          each: 0.07,
+          from: 'random',
+        },
+      },
+    )
+      .from(
+        '.card2 .david-ogivy-box .bottom-content-box .left-box .black-box div',
+        {
+          y: 100,
+          autoAlpha: 0,
+          duration: 1,
+          filter: 'blur(10px)',
+          stagger: {
+            each: 0.15,
+          },
+        },
+        '<0.7',
+      )
+      .from(
+        '.card2 .david-ogivy-box .bottom-content-box .right-box .more-box',
+        {
+          y: 100,
+          autoAlpha: 0,
+          duration: 1,
+        },
+        '<0.7',
+      )
+  } else {
+    const title = document.querySelector('.home-box .card2 .david-ogivy-box .title-box .en-title')
+    if (!title) return
+
+    const split = new SplitText(title, {
+      type: 'chars',
+    })
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.card2',
+        start: 'top center',
+      },
+    })
+    tl.fromTo(
+      split.chars,
+      {
+        autoAlpha: 0,
+        y: 200,
+        filter: 'blur(10px)',
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        filter: 'blur(0px)',
+        ease: 'power2',
+        stagger: {
+          each: 0.07,
+          from: 'random',
+        },
+      },
+    )
+  }
 }
 
 const c3Ani = () => {
-  const title = document.querySelector('.home-box .card3 .title-box .en-title')
-  if (!title) return
+  if (window_width <= 1024) {
+    const title = document.querySelector('.home-box .card3 .title-box .en-title')
+    if (!title) return
 
-  const split = new SplitText(title, {
-    type: 'chars',
-  })
+    const split = new SplitText(title, {
+      type: 'chars',
+    })
 
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.card3',
-      start: 'top center',
-    },
-  })
-  tl.fromTo(
-    split.chars,
-    {
-      autoAlpha: 0,
-      y: 200,
-      filter: 'blur(10px)',
-    },
-    {
-      autoAlpha: 1,
-      y: 0,
-      duration: 1,
-      filter: 'blur(0px)',
-      ease: 'power2',
-      stagger: {
-        each: 0.07,
-        from: 'random',
+    const items = document.querySelectorAll('.home-box .card3 .project-box .item')
+
+    items.forEach((item) => {
+      gsap.fromTo(
+        item,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        },
+      )
+    })
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.card3',
+        start: 'top center',
       },
-    },
-  ).from(
-    '.home-box .card3 .project-box div',
-    {
-      y: '70',
-      opacity: 0,
-      stagger: 0.07,
-      duration: 1,
-    },
-    '<0.3',
-  )
-  .from(
-    '.home-box .card3 .more-box',
-    {
-      x: '-70',
-      opacity: 0,
+    })
+    tl.fromTo(
+      split.chars,
+      {
+        autoAlpha: 0,
+        y: 200,
+        filter: 'blur(10px)',
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        filter: 'blur(0px)',
+        ease: 'power2',
+        stagger: {
+          each: 0.07,
+          from: 'random',
+        },
+      },
+    )
+  } else {
+    const title = document.querySelector('.home-box .card3 .title-box .en-title')
+    if (!title) return
 
-      duration: 1,
-    },
-    '<0.8',
-  )
+    const split = new SplitText(title, {
+      type: 'chars',
+    })
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.card3',
+        start: 'top center',
+      },
+    })
+    tl.fromTo(
+      split.chars,
+      {
+        autoAlpha: 0,
+        y: 200,
+        filter: 'blur(10px)',
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        filter: 'blur(0px)',
+        ease: 'power2',
+        stagger: {
+          each: 0.07,
+          from: 'random',
+        },
+      },
+    )
+      .from(
+        '.home-box .card3 .project-box div',
+        {
+          y: '70',
+          opacity: 0,
+          stagger: 0.07,
+          duration: 1,
+        },
+        '<0.3',
+      )
+      .from(
+        '.home-box .card3 .more-box',
+        {
+          x: '-70',
+          opacity: 0,
+
+          duration: 1,
+        },
+        '<0.8',
+      )
+  }
 }
 
 const c4Ani = () => {
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.card4',
-      start: 'top center',
-      end: '+=300',    // 延長觸發區間，讓動畫更慢
-  scrub: 2,
-    },
-  })
+  if (window_width <= 1024) {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.card4',
+        start: '-40% center',
+      },
+    })
 
-  tl.fromTo(
-    '.home-box .card4 .marquee-container',
-    {
-      width:'20%',
-    },
-    {
-      width:'70%',
-      duration: 1.5,
-    }
-  )
+    tl.fromTo(
+      '.home-box .card4 .marquee-container',
+      {
+        width: '20%',
+      },
+      {
+        width: '77%',
+        duration: 1.5,
+      },
+    )
+  } else {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.card4',
+        start: 'top center',
+        end: '+=300', // 延長觸發區間，讓動畫更慢
+        scrub: 2,
+      },
+    })
 
+    tl.fromTo(
+      '.home-box .card4 .marquee-container',
+      {
+        width: '20%',
+      },
+      {
+        width: '70%',
+        duration: 1.5,
+      },
+    )
+  }
 }
 
 onMounted(() => {
-  // document.body.style.overflow = 'hidden'
   c1Ani()
-
-  setTimeout(() => {
-    // document.body.style.overflow = 'auto'
-  }, 2000)
 
   c2TitleAni()
   c2Ani()
