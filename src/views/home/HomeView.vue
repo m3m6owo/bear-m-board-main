@@ -653,7 +653,6 @@ const c4Ani = () => {
 
 onMounted(() => {
   c1Ani()
-
   c2TitleAni()
   c2Ani()
   c3Ani()

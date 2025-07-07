@@ -8,7 +8,9 @@
   z-index: 0;
   position: sticky;
   bottom: 0px;
-
+  @media all and (max-width: 1024px) {
+    height: 40vw;
+  }
   // FFE2E2
   //#D2C1B6
   .footer-container {
@@ -30,12 +32,19 @@
       margin-left: 2vw;
 
 
+      @media all and (max-width: 1024px) {
+        font-size: 7vw;
+      }
+
     }
 
     svg {
       width: 4vw;
-
       margin-bottom: -1vw;
+      @media all and (max-width: 1024px) {
+        width: 8vw;        margin-left: -2vw;
+      }
+
     }
   }
 

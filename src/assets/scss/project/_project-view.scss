@@ -1,32 +1,38 @@
-@use '../utils/mixin' as *;
-@use '../utils/variables' as *;
+@use '../utils/mixin'as *;
+@use '../utils/variables'as *;
 
 .project-body {
   background-color: #ECE8E8;
   position: relative;
-z-index: 20;
+  z-index: 20;
 
   .project-container {
     width: 100%;
     display: flex;
-    flex-direction: column;  background-color: #ECE8E8;
+    flex-direction: column;
+    background-color: #ECE8E8;
     position: relative;
     padding-top: 4vw;
-    padding-bottom: 10vw;
+    padding-bottom: 7vw;
     z-index: 20;
+
     @media all and (max-width: 1024px) {
-      padding-top: 5vw;
-      padding-bottom: 40vw;
+      padding-top: 0vw;
+
     }
+
     .top-img-box {
       width: 80%;
       margin: 0 auto;
       position: relative;
       overflow: hidden;
-      height: 23vw;
+      height: 25vw;
+
       @media all and (max-width: 1024px) {
-        width: 88%;
+        width: 100%;
+        height: auto;
       }
+
       img {
         width: 100%;
         z-index: 1;
@@ -41,13 +47,18 @@ z-index: 20;
         transform: translate(-50%, -50%);
         z-index: 2;
         text-align: center;
+
         @media all and (max-width: 1024px) {
           display: flex;
-          top: 41%;
+          top: 45%;
         }
 
         .big-en-title {
           @include pageBigENTitle();
+
+          @media all and (max-width: 1024px) {
+            font-size: 8.8vw;
+          }
 
         }
       }
@@ -71,12 +82,14 @@ z-index: 20;
       .project-box {
         display: flex;
         width: 80%;
-        display: flex;align-content: flex-start;
+        display: flex;
+        align-content: flex-start;
         flex-wrap: wrap;
         justify-content: space-between;
+
         @media all and (max-width: 1024px) {
           flex-direction: column;
-          // width: 88%;
+          width: 86%;
           margin: 0 auto;
         }
 
@@ -85,22 +98,25 @@ z-index: 20;
           display: flex;
           margin-bottom: 5vw;
           flex-direction: column;
+
           @media all and (max-width: 1024px) {
-
+            width: 100%;
             flex-basis: initial;
-            margin-bottom: 16vw;
+            margin-bottom: 15vw;
           }
 
-          @media all and (max-width: 500px) {
-            margin-bottom: 12vw;
-          }
 
-          .img-box{
+          .img-box {
             display: flex;
             width: 18vw;
             height: 18vw;
 
-            img{
+            @media all and (max-width: 1024px) {
+              width: 100%;
+              height: 84vw;
+            }
+
+            img {
               width: 100%;
               object-fit: cover;
 
@@ -112,25 +128,31 @@ z-index: 20;
             width: 100%;
             justify-content: space-between;
             margin-top: 0.9vw;
+
             @media all and (max-width: 1024px) {
-              margin-top: 3vw;
+              margin-top: 5vw;
             }
 
             .project-name {
-              font-size:$font-22;
+              font-size: $font-22;
               color: #232323;
               font-family: "Noto Serif TC";
               font-weight: bold;
               margin-right: 1vw;
               letter-spacing: 0.2em;
               align-self: center;
+
               @media all and (max-width: 1024px) {
-                font-size: $font-mobile-40;
+                font-size: 5.2vw;
+                font-weight: bold;
+                text-align: center;
+                padding-top: 0vw;
               }
             }
 
           }
         }
+
         .project-item-box {
           -webkit-transition: all 0.6s ease-in;
           -o-transition: all 0.6s ease-in;
@@ -146,7 +168,20 @@ z-index: 20;
       }
 
       .scroll-top-box {
-        display: none;
+
+        display: flex;
+        justify-content: right;
+        cursor: pointer;
+
+        margin-top: 2vw;
+
+
+        &:hover {
+          .scroll-top {
+            transform: translateY(-1vw);
+          }
+
+        }
 
         @media all and (max-width: 1024px) {
           display: flex;
@@ -154,19 +189,18 @@ z-index: 20;
           cursor: pointer;
           width: 88%;
           margin: 0 auto;
-          padding-right: 4vw;
-          margin-top: 2vw;
+
         }
 
         .scroll-top {
           width: 10vw;
+          transition: all 0.3s ease-in-out;
 
-          @media all and (max-width: 500px) {
-            width: 12vw;
+          @media all and (max-width: 1024px) {
+            width: 13vw;
           }
         }
       }
     }
   }
 }
-
