@@ -1,64 +1,111 @@
-.contact-body{
+.contact-body {
   display: flex;
   flex-direction: column;
   padding: 7vw 6vw;
   position: relative;
-  .title-box{
+  @media all and (max-width: 1024px) {
+    padding: 9vw 8vw;
+  }
+  .title-box {
     display: flex;
     flex-direction: column;
     margin-top: 1vw;
     color: #252525;
-    div{
+
+    div {
       font-size: 7.5vw;
       font-family: "Cormorant Garamond";
       line-height: .75;
       font-weight: 400;
+      @media all and (max-width: 1024px) {
+        font-size:10vw;
+        line-height: 1;
+        font-weight: bold;
+      }
     }
   }
 
-  .info-box{
+  .info-box {
     display: flex;
     width: 100%;
-justify-content: left;
-margin-top: 2vw; position: relative;
-    .left-box{
+    justify-content: left;
+    margin-top: 2vw;
+    position: relative;
+    @media all and (max-width: 1024px) {
+      margin-top: 2vw;
+    }
+    .left-box {
       display: flex;
       font-family: 'Noto Sans TC';
       flex-direction: column;
+
       @keyframes wave {
-        0% { transform: rotate(0deg); }
-        15% { transform: rotate(15deg); }
-        30% { transform: rotate(-10deg); }
-        45% { transform: rotate(15deg); }
-        60% { transform: rotate(-10deg); }
-        75% { transform: rotate(15deg); }
-        100% { transform: rotate(0deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+
+        15% {
+          transform: rotate(15deg);
+        }
+
+        30% {
+          transform: rotate(-10deg);
+        }
+
+        45% {
+          transform: rotate(15deg);
+        }
+
+        60% {
+          transform: rotate(-10deg);
+        }
+
+        75% {
+          transform: rotate(15deg);
+        }
+
+        100% {
+          transform: rotate(0deg);
+        }
       }
-      .greeting{
+
+      .greeting {
         color: #252525;
         display: flex;
         font-size: 2.3vw;
-        div{
-          margin-left: 0.3vw;  transition: all 0.3s ease;
+        @media all and (max-width: 1024px) {
+          font-size: 4.3vw;
         }
+        div {
+          margin-left: 0.3vw;
+          transition: all 0.3s ease;
+        }
+
         &:hover {
 
-          div{
+          div {
             animation: wave 1s ease infinite;
           }
         }
       }
 
-      .email{
+      .email {
         display: flex;
         flex-direction: column;
         font-size: 1.7vw;
         margin-top: 5vw;
-        margin-bottom: 2.5vw;   color: #252525;
-        div{
+        margin-bottom: 2.5vw;
+        color: #252525;
+        @media all and (max-width: 1024px) {
+          font-size:4vw;
+          margin-top: 15vw;
+        }
+        div {
           font-size: 1.3vw;
-
           opacity: .5;
+          @media all and (max-width: 1024px) {
+            font-size:3.75vw;
+          }
         }
       }
 
@@ -67,10 +114,17 @@ margin-top: 2vw; position: relative;
 
   }
 
-  .me-img{
+  .me-img {
     position: absolute;
     width: 25vw;
     top: 15vw;
     right: 10vw;
+    @media all and (max-width: 1024px) {
+   position: relative;
+   top: initial;
+   right: initial;
+   width: 100%;
+      margin-top: 3vw;
+    }
   }
 }
