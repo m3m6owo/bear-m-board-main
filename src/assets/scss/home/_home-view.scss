@@ -1,5 +1,25 @@
 @use '../utils/mixin'as *;
 @use '../main'as *;
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
+  padding-left: 3vw;
+  padding-bottom: 2vw;
+}
+
+.loading-text {
+  font-size: 11rem;
+  color: #648197;
+   font-family: "Noto Serif TC";
+  font-style: italic;
+
+}
+
 
 .home-box {
   display: flex;
@@ -28,6 +48,7 @@
     .gradient-overlay {
       position: absolute;
       inset: 0;
+      opacity: 0;
       pointer-events: none;
       background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
           rgba(160, 196, 255, 0.5) 0%,
@@ -94,7 +115,7 @@
       left: 0;
       clip-path: inset(40%);
       will-change: transform;
-
+      opacity: 0;
       svg {
         display: none;
       }
@@ -222,7 +243,7 @@
       color: #405260;
       font-family: "Jost";
       z-index: 10;
-
+      opacity: 0;
       @media all and (max-width: 1024px) {
         top: 55vw;
         left: 28vw;
@@ -235,7 +256,7 @@
     }
 
     .jshan {
-      scale: 0.8;
+      scale: 0.8;    opacity: 0;
       position: absolute;
       right: 30vw;
       bottom: 13vw;
@@ -243,7 +264,7 @@
       font-weight: 500;
       font-size: 10vw;
       font-family: "Dancing Script", cursive;
-      font-style: italic;
+      // font-style: italic;
       z-index: 10;
       color: #405260;
 
@@ -380,7 +401,7 @@
           .black-box,
           .blue-box,
           .black2-box {
-            font-size: 2vw;
+            font-size: 1.7vw;
             display: flex;
             position: relative;
             flex-direction: column;

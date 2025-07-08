@@ -13,7 +13,7 @@
     position: absolute;
     font-family: "Faculty Glyphic", sans-serif;
     z-index: 30;
-    font-size: 7.5vw;
+    font-size: 7vw;
     left: 36vw;
     top: 8vw;
     letter-spacing: 0.1em;
@@ -181,17 +181,20 @@
   flex-direction: column;
     }
     .personal-statement {
-      display: flex;
-      justify-content: right;
+      // display: flex;
+      // justify-content: right;
       text-align: justify;
       padding-top: 1.5vw;
-      line-height: 2;
+      line-height: 2.3;
       font-size: 1vw;
       margin-bottom: 2vw;
       color: #232323;
       letter-spacing: 0.08em;
       width: 58%;
       margin-right: 5vw;
+      span{
+        color: cadetblue;
+      }
       @media all and (max-width: 1024px) {
         font-size: 3.75vw;
         width: 100%;

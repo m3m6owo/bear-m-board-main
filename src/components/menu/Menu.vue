@@ -235,7 +235,11 @@ const showClick = (val: boolean) => {
           scale: 1,
         },
         '<0.2'
-      )
+      ).from('.menu-main .right-menu-box .link-box .item .links',{
+        y:70,
+        stagger:0.2,ease: 'myEase',
+        duration: 1,
+      },'<0.3')
 
       imgRefs.value.forEach((el) => {
         gsap.set(el, { clipPath: 'inset(100% 0% 0% 0%)', zIndex: 0 })

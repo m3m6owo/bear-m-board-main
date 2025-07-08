@@ -154,6 +154,7 @@
         align-items: center;
         transition: all 0.5s;
         color: #3d3a39;
+        overflow: hidden;
 
         .links {
           display: flex;
@@ -162,6 +163,7 @@
           padding-top: 3vw;
           position: relative;
           color: #3d3a39;
+          overflow: hidden;
 
 
           &.fade-out {

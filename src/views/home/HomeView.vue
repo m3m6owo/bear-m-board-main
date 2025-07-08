@@ -1,4 +1,8 @@
 <template>
+   <!-- Loading 畫面 -->
+   <div class="loading-screen" v-show="isLoading">
+    <div class="loading-text">{{ loadingNumber }}</div>
+  </div>
   <div class="home-box main-box">
     <div class="card1" @mousemove="handleMouseMove">
       <!-- <div class="bg-box">
@@ -122,7 +126,10 @@ import imgSky from '@/assets/img/home/bg_sky3.webp'
 
 gsap.registerPlugin(SplitText, ScrollTrigger)
 
-const window_width = window.innerWidth
+const window_width = window.innerWidth;
+const isLoading = ref(true)
+const loadingNumber = ref(0)
+
 
 const handleMouseMove = (e: MouseEvent) => {
   const card = e.currentTarget as HTMLElement
@@ -163,12 +170,20 @@ const c1Ani = () => {
   const splitJshan = new SplitText(jshan, { type: 'chars' })
 
   if (window_width <= 1024) {
-    const tl = gsap.timeline({ delay: 0.1 })
-    tl.to('.gradient-overlay,.gradient-bg', {
+    const tl = gsap.timeline({  })
+    tl
+    .to('.gradient-overlay,.gradient-bg', {
+      duration: 0.7,
+      opacity:1
+    })
+    .to('.gradient-overlay,.gradient-bg', {
       clipPath: 'inset(0%)',
       duration: 1,
       ease: 'expo.in',
-    }).from(
+
+    },'<0.1')
+
+    .from(
       splitHello.chars,
       {
         x: gsap.utils.wrap([-70, 70]),
@@ -180,6 +195,14 @@ const c1Ani = () => {
       },
       '<0.75',
     )
+    .to(
+        '.hello',
+        {
+          scale: 1,   opacity:1,
+          duration: 1,
+        },
+        '<',
+      )
     .from(
       splitJshan.chars,
       {
@@ -191,14 +214,28 @@ const c1Ani = () => {
         stagger: { each: 0.05, from: 'center' },
       },
       '<',
-    )
+
+    ).to(
+        '.jshan',
+        {
+          scale: 1,
+          duration: 1,   opacity:1,
+        },
+        '<',
+      )
   } else {
-    const tl = gsap.timeline({ delay: 0.1 })
-    tl.to('.gradient-overlay,.gradient-bg', {
+    const tl = gsap.timeline({  })
+    tl
+    .to('.gradient-overlay,.gradient-bg', {
+      duration: 0.7,
+      opacity:1
+    })
+    .to('.gradient-overlay,.gradient-bg', {
       clipPath: 'inset(0%)',
       duration: 1,
       ease: 'expo.in',
-    })
+
+    },'<0.1')
       .to(
         splitHello.chars,
         {
@@ -208,13 +245,14 @@ const c1Ani = () => {
           stagger: 0.05,
           color: 'white',
           duration: 1,
+          opacity:1
         },
         '<0.75',
       )
       .to(
         '.hello',
         {
-          scale: 1,
+          scale: 1,   opacity:1,
           duration: 1,
         },
         '<',
@@ -225,7 +263,7 @@ const c1Ani = () => {
           x: '23vw',
           scale: 1,
           y: '7vw',
-
+          opacity:1,
           stagger: {
             each: '0.05',
             from: 'end',
@@ -239,7 +277,7 @@ const c1Ani = () => {
         '.jshan',
         {
           scale: 1,
-          duration: 1,
+          duration: 1,   opacity:1,
         },
         '<',
       )
@@ -652,11 +690,31 @@ const c4Ani = () => {
 }
 
 onMounted(() => {
-  c1Ani()
-  c2TitleAni()
-  c2Ani()
-  c3Ani()
-  c4Ani()
+  // 數字跑到 100%
+  gsap.to(loadingNumber, {
+    value: 100,
+    duration: 1.2,
+    ease: 'power2.out',
+    onUpdate: () => {
+      loadingNumber.value = Math.round(loadingNumber.value)
+    },
+  })
+
+  // 畫面淡出
+  gsap.to('.loading-screen', {
+    autoAlpha: 0,
+    duration: 1,
+    delay: 0.5,
+    onComplete: () => {
+      isLoading.value = false
+      // 主動畫開始
+      c1Ani()
+      c2TitleAni()
+      c2Ani()
+      c3Ani()
+      c4Ani()
+    },
+  })
 })
 </script>
 
