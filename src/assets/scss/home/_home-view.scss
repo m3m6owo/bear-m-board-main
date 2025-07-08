@@ -1,5 +1,5 @@
-@use '../utils/mixin'as *;
-@use '../main'as *;
+@use '../utils/mixin' as *;
+@use '../main' as *;
 
 .home-box {
   display: flex;
@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 20;
   flex-direction: column;
-  background-color: #ECE8E8;
+  background-color: #ece8e8;
 
   .card1 {
     width: 100%;
@@ -20,7 +20,7 @@
     .fullscreen-mask {
       position: fixed;
       inset: 0;
-      background: #ECE8E8; // 跟背景色一樣，或改為黑色也可
+      background: #ece8e8; // 跟背景色一樣，或改為黑色也可
       z-index: 999;
       pointer-events: none;
     }
@@ -29,17 +29,17 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
-          rgba(160, 196, 255, 0.5) 0%,
-          rgba(255, 198, 255, 0.3) 40%,
-          transparent 80%);
+      background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%),
+        rgba(160, 196, 255, 0.5) 0%,
+        rgba(255, 198, 255, 0.3) 40%,
+        transparent 80%
+      );
       will-change: transform;
       transition: background 0.2s ease;
       z-index: 1;
       clip-path: inset(40%);
     }
-
-
 
     @keyframes moveInCircle {
       0% {
@@ -83,7 +83,6 @@
       }
     }
 
-
     .gradient-bg {
       width: 100vw;
       height: 100vh;
@@ -99,7 +98,6 @@
         display: none;
       }
 
-
       .gradients-container {
         filter: url(#goo) blur(40px);
         width: 100%;
@@ -108,7 +106,12 @@
 
       .g1 {
         position: absolute;
-        background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+        background: radial-gradient(
+            circle at center,
+            rgba(var(--color1), 0.8) 0,
+            rgba(var(--color1), 0) 50%
+          )
+          no-repeat;
         mix-blend-mode: var(--blending);
 
         width: var(--circle-size);
@@ -124,7 +127,12 @@
 
       .g2 {
         position: absolute;
-        background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+        background: radial-gradient(
+            circle at center,
+            rgba(var(--color2), 0.8) 0,
+            rgba(var(--color2), 0) 50%
+          )
+          no-repeat;
         mix-blend-mode: var(--blending);
 
         width: var(--circle-size);
@@ -140,7 +148,12 @@
 
       .g3 {
         position: absolute;
-        background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+        background: radial-gradient(
+            circle at center,
+            rgba(var(--color3), 0.8) 0,
+            rgba(var(--color3), 0) 50%
+          )
+          no-repeat;
         mix-blend-mode: var(--blending);
 
         width: var(--circle-size);
@@ -156,7 +169,12 @@
 
       .g4 {
         position: absolute;
-        background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+        background: radial-gradient(
+            circle at center,
+            rgba(var(--color4), 0.8) 0,
+            rgba(var(--color4), 0) 50%
+          )
+          no-repeat;
         mix-blend-mode: var(--blending);
 
         width: var(--circle-size);
@@ -172,7 +190,12 @@
 
       .g5 {
         position: absolute;
-        background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+        background: radial-gradient(
+            circle at center,
+            rgba(var(--color5), 0.8) 0,
+            rgba(var(--color5), 0) 50%
+          )
+          no-repeat;
         mix-blend-mode: var(--blending);
 
         width: calc(var(--circle-size) * 2);
@@ -188,7 +211,12 @@
 
       .interactive {
         position: absolute;
-        background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
+        background: radial-gradient(
+            circle at center,
+            rgba(var(--color-interactive), 0.8) 0,
+            rgba(var(--color-interactive), 0) 50%
+          )
+          no-repeat;
         mix-blend-mode: var(--blending);
 
         width: 100%;
@@ -220,7 +248,7 @@
       color: white;
       font-size: 10vw;
       color: #405260;
-      font-family: "Jost";
+      font-family: 'Jost';
       z-index: 10;
 
       @media all and (max-width: 1024px) {
@@ -230,8 +258,6 @@
         font-size: 15vw;
         color: white;
       }
-
-
     }
 
     .jshan {
@@ -242,7 +268,7 @@
       color: white;
       font-weight: 500;
       font-size: 10vw;
-      font-family: "Dancing Script", cursive;
+      font-family: 'Dancing Script', cursive;
       font-style: italic;
       z-index: 10;
       color: #405260;
@@ -250,13 +276,12 @@
       @media all and (max-width: 1024px) {
         right: 14vw;
         font-style: initial;
-        font-family: "Noto Serif TC";
+        font-family: 'Noto Serif TC';
         scale: 1;
         bottom: 60vw;
         color: white;
         font-size: 14vw;
       }
-
     }
 
     .small-title {
@@ -320,7 +345,7 @@
 
         .en-title {
           font-size: 5vw;
-          font-family: "Cormorant Garamond";
+          font-family: 'Cormorant Garamond';
           color: #232323;
           font-weight: bold;
           overflow: hidden;
@@ -329,7 +354,6 @@
 
           div {
             overflow: hidden;
-
           }
 
           @media all and (max-width: 1024px) {
@@ -339,7 +363,7 @@
 
             &::after {
               position: absolute;
-              content: "";
+              content: '';
               left: 7vw;
               background-color: #232323;
               width: 16vw;
@@ -350,7 +374,7 @@
 
             &::before {
               position: absolute;
-              content: "";
+              content: '';
               right: 7vw;
               background-color: #232323;
               width: 16vw;
@@ -375,12 +399,12 @@
         }
 
         .left-box {
-          font-family: "微軟正黑體";
+          font-family: '微軟正黑體';
 
           .black-box,
           .blue-box,
           .black2-box {
-            font-size: 2vw;
+            font-size: 1.7vw;
             display: flex;
             position: relative;
             flex-direction: column;
@@ -391,7 +415,6 @@
               text-align: center;
               line-height: 2.3;
             }
-
 
             // 統一 .clip-text 效果
             .clip-text {
@@ -438,7 +461,7 @@
 
             @media all and (max-width: 1024px) {
               display: flex;
-              font-family: "Cormorant Garamond";
+              font-family: 'Cormorant Garamond';
               flex-direction: column;
               margin-top: 1.5vw;
               line-height: 1.5;
@@ -478,7 +501,6 @@
               margin-top: 5vw;
             }
 
-
             div {
               display: flex;
               align-items: center;
@@ -505,7 +527,6 @@
     }
   }
 
-
   .card3 {
     display: flex;
     flex-direction: column;
@@ -523,12 +544,11 @@
       @media all and (max-width: 1024px) {
         justify-content: center;
         margin-bottom: 7vw;
-
       }
 
       .en-title {
         font-size: 5vw;
-        font-family: "Cormorant Garamond";
+        font-family: 'Cormorant Garamond';
         color: #232323;
         font-weight: bold;
         letter-spacing: 0.05em;
@@ -542,7 +562,7 @@
 
           &::after {
             position: absolute;
-            content: "";
+            content: '';
             left: -21vw;
             background-color: #232323;
             width: 17vw;
@@ -553,7 +573,7 @@
 
           &::before {
             position: absolute;
-            content: "";
+            content: '';
             right: -21vw;
             background-color: #232323;
             width: 17vw;
@@ -594,13 +614,12 @@
           img {
             width: 100%;
             object-fit: cover;
-
           }
         }
 
         .name {
           font-size: 1vw;
-          font-family: "Noto Serif TC";
+          font-family: 'Noto Serif TC';
           letter-spacing: 0.3em;
           color: #232323;
           font-weight: 500;
@@ -631,7 +650,8 @@
         margin-top: 0vw;
       }
 
-      @media all and (max-width: 500px) {}
+      @media all and (max-width: 500px) {
+      }
 
       div {
         display: flex;
@@ -701,9 +721,10 @@
         color: #232323;
         padding: 3.5vw 0;
         box-sizing: border-box;
-        transition: margin-top 0.5s ease, opacity 0.5s ease; // 加在這裡
+        transition:
+          margin-top 0.5s ease,
+          opacity 0.5s ease; // 加在這裡
         white-space: nowrap;
-
       }
 
       .bottom {
@@ -724,7 +745,6 @@
     }
 
     .marquee-container:hover {
-
       .bottom {
         margin-top: 0vw;
       }
@@ -734,5 +754,4 @@
       }
     }
   }
-
 }

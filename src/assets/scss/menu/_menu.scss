@@ -31,8 +31,6 @@
       width: 18vw;
     }
 
-
-
     img {
       position: relative;
       z-index: 2;
@@ -87,9 +85,6 @@
     }
   }
 
-
-
-
   .left-img-box {
     flex: 3;
     overflow: hidden;
@@ -139,14 +134,9 @@
     }
 
     .link-box {
-
       display: flex;
       flex-direction: column;
       justify-content: center;
-
-      @media all and (max-width: 1400px) {
-        margin-top: 10vw;
-      }
 
       .item {
         display: flex;
@@ -162,7 +152,6 @@
           padding-top: 3vw;
           position: relative;
           color: #3d3a39;
-
 
           &.fade-out {
             opacity: 0.3;
@@ -181,10 +170,10 @@
             font-weight: 400;
             margin-bottom: 1vw;
 
-            @media all and (max-width: 1400px) {
-              font-size: 1.4vw;
-              margin-bottom: 1.5vw;
-            }
+            // @media all and (max-width: 1400px) {
+            //   font-size: 1.4vw;
+            //   margin-bottom: 1.5vw;
+            // }
 
             @media all and (max-width: 1024px) {
               font-size: 5vw;
@@ -210,7 +199,7 @@
       position: absolute;
       top: 1.5vw;
       left: 2rem;
-      font-family: "Noto Sans TC";
+      font-family: 'Noto Sans TC';
       font-size: 1rem;
       letter-spacing: 0.1em;
       color: #65839b;
@@ -233,18 +222,17 @@
         width: 1em;
         height: 1em;
 
-        vertical-align: -.15em;
+        vertical-align: -0.15em;
 
         @media all and (max-width: 1024px) {
           width: 6vw;
           height: 6vw;
-          vertical-align: -.4em;
+          vertical-align: -0.4em;
         }
       }
 
-
       &:hover {
-      transform: translateX(-1vw);
+        transform: translateX(-1vw);
 
         @media all and (max-width: 1024px) {
           color: #65839b;

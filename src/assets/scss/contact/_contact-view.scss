@@ -13,12 +13,12 @@
     color: #252525;
 
     div {
-      font-size: 7.5vw;
-      font-family: "Cormorant Garamond";
-      line-height: .75;
+      font-size: 6.5vw;
+      font-family: 'Cormorant Garamond';
+      line-height: 0.75;
       font-weight: 400;
       @media all and (max-width: 1024px) {
-        font-size:10vw;
+        font-size: 10vw;
         line-height: 1;
         font-weight: bold;
       }
@@ -82,7 +82,6 @@
         }
 
         &:hover {
-
           div {
             animation: wave 1s ease infinite;
           }
@@ -97,21 +96,18 @@
         margin-bottom: 2.5vw;
         color: #252525;
         @media all and (max-width: 1024px) {
-          font-size:4vw;
+          font-size: 4vw;
           margin-top: 15vw;
         }
         div {
           font-size: 1.3vw;
-          opacity: .5;
+          opacity: 0.5;
           @media all and (max-width: 1024px) {
-            font-size:3.75vw;
+            font-size: 3.75vw;
           }
         }
       }
-
     }
-
-
   }
 
   .me-img {
@@ -120,10 +116,10 @@
     top: 15vw;
     right: 10vw;
     @media all and (max-width: 1024px) {
-   position: relative;
-   top: initial;
-   right: initial;
-   width: 100%;
+      position: relative;
+      top: initial;
+      right: initial;
+      width: 100%;
       margin-top: 3vw;
     }
   }

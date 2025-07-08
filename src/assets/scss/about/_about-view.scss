@@ -6,14 +6,14 @@
   position: relative;
   flex-direction: column;
   @media all and (max-width: 1024px) {
-  padding: 6vw 7vw;
-  padding-bottom: 17vw;
+    padding: 6vw 7vw;
+    padding-bottom: 17vw;
   }
   .big-title {
     position: absolute;
-    font-family: "Faculty Glyphic", sans-serif;
+    font-family: 'Faculty Glyphic', sans-serif;
     z-index: 30;
-    font-size: 7.5vw;
+    font-size: 7vw;
     left: 36vw;
     top: 8vw;
     letter-spacing: 0.1em;
@@ -47,19 +47,20 @@
         margin-left: 0vw;
         margin-top: 6vw;
         width: 100%;
-        }
+      }
       .item {
         position: absolute;
         font-size: 12vw;
-        font-family: "Ruthie", cursive;
-        left: -5vw;z-index: 10;
+        font-family: 'Ruthie', cursive;
+        left: -5vw;
+        z-index: 10;
         transform: rotateZ(19deg);
         @media all and (max-width: 1024px) {
           font-size: 23vw;
 
           left: -2vw;
           top: -10vw;
-          }
+        }
       }
 
       .img-box {
@@ -82,7 +83,8 @@
 
       padding-left: 8vw;
       @media all and (max-width: 1024px) {
-        padding-left:3vw; padding-top: 10vw;
+        padding-left: 3vw;
+        padding-top: 10vw;
         padding-right: 3vw;
         width: 100%;
       }
@@ -129,7 +131,6 @@
           font-size: 1.1rem;
           line-height: 1.6;
           color: #555;
-
         }
 
         ul {
@@ -152,13 +153,11 @@
         margin-left: 19vw;
         animation: floatUpDown 3s ease-in-out infinite;
         @media all and (max-width: 1024px) {
-
-        display: none;
+          display: none;
         }
       }
 
       @keyframes floatUpDown {
-
         0%,
         100% {
           transform: translateY(0);
@@ -178,7 +177,7 @@
     margin-top: 6vw;
     position: relative;
     @media all and (max-width: 1024px) {
-  flex-direction: column;
+      flex-direction: column;
     }
     .personal-statement {
       display: flex;
@@ -203,7 +202,7 @@
 
     .title {
       position: absolute;
-      font-family: "Faculty Glyphic", sans-serif;
+      font-family: 'Faculty Glyphic', sans-serif;
       z-index: 30;
       font-size: 3.5vw;
       color: #232323;
@@ -230,16 +229,15 @@
     color: #232323;
 
     .title {
-      font-family: "Faculty Glyphic", sans-serif;
+      font-family: 'Faculty Glyphic', sans-serif;
       font-size: 2.5vw;
       letter-spacing: 0.1em;
       margin-bottom: 0.5vw;
       margin-left: 2vw;
       @media all and (max-width: 1024px) {
-
         margin-top: 8vw;
         margin-bottom: 2.5vw;
-        font-size:6vw;
+        font-size: 6vw;
       }
     }
 
