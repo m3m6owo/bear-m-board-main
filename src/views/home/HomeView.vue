@@ -1,7 +1,7 @@
 <template>
    <!-- Loading 畫面 -->
    <div class="loading-screen" v-show="isLoading">
-    <div class="loading-text">{{ loadingNumber }}</div>
+    <div class="loading-text">{{ loadingNumber }}<span>%</span></div>
   </div>
   <div class="home-box main-box">
     <div class="card1" @mousemove="handleMouseMove">

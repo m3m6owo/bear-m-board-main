@@ -10,6 +10,9 @@
   justify-content: left;
   padding-left: 3vw;
   padding-bottom: 2vw;
+  @media all and (max-width: 1024px) {
+    padding-bottom: 4vw;
+  }
 }
 
 .loading-text {
@@ -17,7 +20,17 @@
   color: #648197;
    font-family: "Noto Serif TC";
   font-style: italic;
+  @media all and (max-width: 1024px) {
+    font-size: 4rem;
+    //  font-style: initial;
+  }
 
+  span{
+    font-size: 6vw;
+    @media all and (max-width: 1024px) {
+      font-size: 10vw;
+    }
+  }
 }
 
 
