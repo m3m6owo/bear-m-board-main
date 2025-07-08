@@ -1,8 +1,5 @@
 <template>
-   <!-- Loading 畫面 -->
-   <div class="loading-screen" v-show="isLoading">
-    <div class="loading-text">{{ loadingNumber }}<span>%</span></div>
-  </div>
+
   <div class="home-box main-box">
     <div class="card1" @mousemove="handleMouseMove">
       <!-- <div class="bg-box">
@@ -127,8 +124,6 @@ import imgSky from '@/assets/img/home/bg_sky3.webp'
 gsap.registerPlugin(SplitText, ScrollTrigger)
 
 const window_width = window.innerWidth;
-const isLoading = ref(true)
-const loadingNumber = ref(0)
 
 
 const handleMouseMove = (e: MouseEvent) => {
@@ -235,7 +230,7 @@ const c1Ani = () => {
       duration: 1,
       ease: 'expo.in',
 
-    },'<0.1')
+    },'<')
       .to(
         splitHello.chars,
         {
@@ -690,31 +685,11 @@ const c4Ani = () => {
 }
 
 onMounted(() => {
-  // 數字跑到 100%
-  gsap.to(loadingNumber, {
-    value: 100,
-    duration: 1.2,
-    ease: 'power2.out',
-    onUpdate: () => {
-      loadingNumber.value = Math.round(loadingNumber.value)
-    },
-  })
-
-  // 畫面淡出
-  gsap.to('.loading-screen', {
-    autoAlpha: 0,
-    duration: 1,
-    delay: 0.5,
-    onComplete: () => {
-      isLoading.value = false
-      // 主動畫開始
-      c1Ani()
+  c1Ani()
       c2TitleAni()
       c2Ani()
       c3Ani()
       c4Ani()
-    },
-  })
 })
 </script>
 
